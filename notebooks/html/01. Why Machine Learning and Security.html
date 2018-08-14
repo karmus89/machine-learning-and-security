@@ -11767,28 +11767,6 @@ div#notebook {
     });
     </script>
     <!-- End of mathjax configuration --></head>
-
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="https://rawgit.com/ipython-contrib/jupyter_contrib_nbextensions/master/src/jupyter_contrib_nbextensions/nbextensions/toc2/main.css">
-
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<script src="https://rawgit.com/ipython-contrib/jupyter_contrib_nbextensions/master/src/jupyter_contrib_nbextensions/nbextensions/toc2/toc2.js"></script>
-
-<script>
-$( document ).ready(function(){
-
-            var cfg = {"base_numbering": 1, "nav_menu": {}, "number_sections": false, "sideBar": true, "skip_h1_title": true, "title_cell": "Table of Contents", "title_sidebar": "Contents", "toc_cell": true, "toc_position": {"height": "1158px", "left": "278px", "top": "111.133px", "width": "512px"}, "toc_section_display": true, "toc_window_display": true};
-
-            // fire the main function with these parameters
-            require(['nbextensions/toc2/toc2'], function (toc2) {
-                toc2.table_of_contents(cfg);
-            });
-    });
-</script>
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
@@ -11810,7 +11788,7 @@ $( document ).ready(function(){
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Cyber-Threat-Landscape" data-toc-modified-id="Cyber-Threat-Landscape-1">Cyber Threat Landscape</a></span></li><li><span><a href="#What-Is-Machine-Learning?" data-toc-modified-id="What-Is-Machine-Learning?-2">What Is Machine Learning?</a></span></li><li><span><a href="#Real-World-Uses-of-Machine-Learning-in-Security" data-toc-modified-id="Real-World-Uses-of-Machine-Learning-in-Security-3">Real-World Uses of Machine Learning in Security</a></span></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Cyber-Threat-Landscape" data-toc-modified-id="Cyber-Threat-Landscape-1">Cyber Threat Landscape</a></span></li><li><span><a href="#What-Is-Machine-Learning?" data-toc-modified-id="What-Is-Machine-Learning?-2">What Is Machine Learning?</a></span></li><li><span><a href="#Real-World-Uses-of-Machine-Learning-in-Security" data-toc-modified-id="Real-World-Uses-of-Machine-Learning-in-Security-3">Real-World Uses of Machine Learning in Security</a></span></li><li><span><a href="#Spam-Fighting:-An-Iterative-Approach" data-toc-modified-id="Spam-Fighting:-An-Iterative-Approach-4">Spam Fighting: An Iterative Approach</a></span><ul class="toc-item"><li><span><a href="#Mustalistaus-(Blacklisting)" data-toc-modified-id="Mustalistaus-(Blacklisting)-4.1">Mustalistaus (<em>Blacklisting</em>)</a></span></li></ul></li></ul></div>
 </div>
 </div>
 </div>
@@ -11903,6 +11881,363 @@ $( document ).ready(function(){
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Spam-Fighting:-An-Iterative-Approach">Spam Fighting: An Iterative Approach<a class="anchor-link" href="#Spam-Fighting:-An-Iterative-Approach">&#182;</a></h2><p>Roskapostisuodatus on jo aiemmin todettu yhdeksi tietoturvan osa-alueeksi, johon koneoppimista on sovellettu menestyksekkäästi. Tässä osiossa rakennetaankin roskapostisuodatin edeten iteratiivisesti yksinkertaisesti monimutkaisempaan. Mallien koulutukseen käytetään valmiiksi luokiteltuja sähköposteja sisältävää <a href="http://plg.uwaterloo.ca/~gvcormac/treccorpus07/">20017 TREC Public Spam Corpus</a> datasettiä. Tämän lisäksi käytämme hyödyksi <a href="https://github.com/oreilly-mlsec/book-resources/">kirjan GitHub-projektista</a> löytyviä aputoimintoja, joskin muokattuna omaan tarpeeseen.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Mustalistaus-(Blacklisting)">Mustalistaus (<em>Blacklisting</em>)<a class="anchor-link" href="#Mustalistaus-(Blacklisting)">&#182;</a></h3><p>Mustalistan ideana on, että sieltä löytyvät sanat esiintyvät vain roskaposteissa.</p>
+<p>Ensimmäisessä iteraatiossa rakennetaan malli, joka tutkii sähköpostien sanat läpi ja luokittelee sähköpostit siten oikeaksi sähköpostiksi tai roskapostiksi. Keskiössä on tekstin käsittely siten, että sanoja käsitellään <code>nltk</code>-paketilla (Natural Language ToolKit) perusmuotoisiksi. Tämän jälkeen muodostetaan sanastot kummallekin sähköpostiluokalle, minkä jälkeen muodostetaan vain roskaposteissa esiintyvien sanojen mustalista.  Sähköpostidatasetin apufuntiomoduuli löytyy tiedostosta <code>utils/email_utils.py</code>. Se kannattaa käydä läpi, jotta tietää, mitä konepellin alla tapahtuu.</p>
+<p>Ensin siis ladataan datasetti käyttöön määritetyistä sijainneista, minkä jälkeen siitä erotellaan koulutus- ja testisetit. Settien erottelun jälkeen muodostetaan koulutussetin pohjalta mustalista.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="k">import</span> <span class="n">email_utils</span>
+
+<span class="n">ROOT_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()),</span><span class="s1">&#39;datasets&#39;</span><span class="p">,</span><span class="s1">&#39;trec07p&#39;</span><span class="p">)</span>
+<span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ROOT_DIR</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+<span class="n">LABELS_FILE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ROOT_DIR</span><span class="p">,</span><span class="s1">&#39;full&#39;</span><span class="p">,</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<span class="n">TRAINING_SET_RATIO</span> <span class="o">=</span> <span class="mf">0.7</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="n">email_utils</span><span class="o">.</span><span class="n">read_labels</span><span class="p">(</span><span class="n">LABELS_FILE</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">)</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">*</span><span class="n">TRAINING_SET_RATIO</span><span class="p">):]</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">*</span><span class="n">TRAINING_SET_RATIO</span><span class="p">)]</span>
+
+<span class="n">ham_words</span><span class="p">,</span> <span class="n">spam_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(),</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">x_train</span><span class="p">:</span>
+
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
+    
+        <span class="n">label</span><span class="p">,</span> <span class="n">stems</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">filename</span><span class="p">],</span> <span class="n">email_utils</span><span class="o">.</span><span class="n">load_stems</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">stems</span><span class="p">:</span>
+            <span class="k">continue</span>
+        
+        <span class="n">ham_words</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">stems</span><span class="p">)</span> <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">spam_words</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">stems</span><span class="p">)</span>
+
+<span class="n">blacklist</span> <span class="o">=</span> <span class="n">spam_words</span> <span class="o">-</span> <span class="n">ham_words</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Joitain mustalistattuja sanoja:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">blacklist</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Malli löysi kaikenkaikkiaan {len(blacklist)} mustalistattua sanaa.&quot;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Joitain mustalistattuja sanoja:
+fattygo, ichzb3vzzg9tywluzskgicagicagicagica8l3nwyw4+icagicagicagicagpgxpignsyxnz, dvt.nnoemd.com, 8130, o^gp, ootbal, h4-ptb-4-5lk-678d, pmyahoo, contrarious.sdf39.com/a/d/814/1038582, 199.95
+Malli löysi kaikenkaikkiaan 55564 mustalistattua sanaa.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tämän jälkeen luokitellaan testisetin sähköpostit. Luokittelusta muodostetaan matriisi, jossa on omissa sarakkeissaan oikein (O) ja väärin (V) luokitellut sekä positiiviset (P) että negatiiviset (N) luokittelut. Positiivinen luokittelu tarkoittaa oikeaa sähköpostia, negatiivinen roskapostia. Alla oleva kuva havainnollistaa tätä.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="data:image/png;base64,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27evrFu3Tnr06CEan3fffdf57EvzkZ+yuf/+++Wqq66S3XffXX744QdELkLCkH8RYBVxaUj5l5Mit2TJEqlatao9klnqoW7dutK7d++8EblRo0bJFVdcId9//73UqFHDUZ4zZ47svffe8sILL8gJJ5yQJfJbvo2vIle7dm259957ZcaMGTJgwABEbsuhTF5B/kWAVcSlIeVf3oqcLotdf/31Mm/ePHnggQdE3+60yhs9erRbMps9e7arNt544w0ZPny4vPjii1KhQgU555xzRJdFdYlt+vTpcuihh8p7770nhxxySDId6tWrJ82bN5dBgwa5n+mkUhtdItE+Gjdu7JbmtJJJrVq23XZb97DSyubGG2+UBx980C1FaULp0p4KQ9Tm40P6vPPOk/nz57ulytS2IbeoY43jeh/56Ti1etP8UYFD5KJFnvyLxmtTV4eUfzkpcioMKhgbtq233lpKly7tfqwPiDJlyki3bt2kffv2TkyOOuooadGihdx1113y5Zdfyh577CEHHXSQDBw40AnTK6+8IieffLI8/vjjbi+kOCL35ptvOlt9627atKnbE7z22mtl7dq18s477ziRVV/uuOMOOf/886VatWpuGUrFVv1o2LChu6+K3J133ikdO3aMlKE+PqT1heCAAw5wY0xtxx9/vGyzzTYyceLESGOM82If+aWOF5GLHn3yLzqzoixCyL+cFLmiAnLbbbdJ9+7dkyK35557OgFJtA4dOsjMmTNl2rRpSZHTiqpXr16FqrQzzzzTCV9xRE6rQBW1ZcuWuT0nbQsXLpS5c+fKYYcdJqtXr5by5cu7alL35PS6HXbYwdnovRNNxW3y5Mny2WefRcpQHx/S+vJw6qmnyu23315oLC1btpRFixa5cfrSfOSHyNmyg/yz8Qst/3JS5F5++WWpVKnSRpHcbbfdZMcdd0yKnC49Dh48OHmdCuCECRPkiy++SIqcVhWnnXZa8hp9C9TqbuTIkcUSuU8++USOPPJIt9+kFaNWK3pYINE2FDl9wGvl99prr0mTJk2S1z3yyCPSunVrVwnqKdHiNh8f0jxkihu9LV8Xwpt0QUHBlgeSxSvIv8zBDiH/clLkinPwRJcItXK66aabComcnszUpcrEcqUKZrNmzQqJ3IEHHuj22YpTyamhCp3uzz399NOyePFiOfzww2XEiBFOLDcUuWeeecaJqlZ9qft1f/zxh/z+++/y6aefOsEsbvNR5LSCrV+/vjshmNqUs56K1RcNX5qP/EJ7k/ZN5Mi/zM0uRC5zLIvVU+I7uWyJ3Pvvv+8OnGx48GTnnXcW3dxOHDxJOK9CNWXKFLcUqSKqpwvXr19faLlS9/D0AMz48eNlv/3222jcderUkXLlyhWLh17k40O6TZs28s0338hbb71VaBx6wEb3JXXi+NJ85IfI2bKD/LPxCy3/qOQMldxXX30leiJQ9/X0UIk2PcCy0047SdeuXZ3ITZ06VVTcdMky0RJC9u2337qTnLonp1VNu3bt5Ndff3V7ckOGDJHLLrssafPTTz+5E51Rlip9FbmxY8fKRRdd5PYlE8vH+qKgb9h6mtWnbxkROdsD0Ud+5J8tpohc5vhF7ilRyT3xxBOb/BhcOzziiCPcN3SZWK7U5UPtR/9axz333OMESo/564Na3xZV5G644QZ3SjKxPKnX6BKpLnVqNaMPAf2soFWrVu5UpVZveuJz3Lhxzk4f/CqGV199teieYtSlPB8fMnqyVE9XbrfddtKvXz+3ZKtjVpaTJk2KHPc4DXzk98svv7gDUtoeffRR948uc2urVauW7LXXXnEiidS3j/zIv0gh3Oji0PIvJyu5zYVQqyj9VCATIqf30Y+XtWpTIVIR0hOc/fv3d9/PqejqcqT+VQ99EOnnAlWqVJEGDRq4JbnEw0hPUeppTRXfWbNmuUMzie/k9Hsyrez0uzu12dSBms2N18eHjPqrS7VXXnmlEzX9lEPHp6ctVfh8aj7y05zTF6tNtQsvvFDGjBnjDUIf+ZF/tvQILf9ySuRsoctNa18fMqHQhp8tUvCDn42AzVrzD5GzMfTemoeMLUTwg5+NgM2a/LPzQ+RsDL23ZpLYQgQ/+NkI2KzJPzs/RM7G0HtrJoktRPCDn42AzZr8s/ND5GwMvbdmkthCBD/42QjYrMk/Oz9EzsbQe2smiS1E8IOfjYDNmvyz80PkbAy9t2aS2EIEP/jZCNisyT87P0TOxtB7ayaJLUTwg5+NgM2a/LPzQ+RsDL23ZpLYQgQ/+NkI2KzJPzs/RM7G0HtrJoktRPCDn42AzZr8s/ND5GwMvbdmkthCBD/42QjYrMk/Oz9EzsbQe2smiS1E8IOfjYDNmvyz80PkbAy9t2aS2EIEP/jZCNisyT87P0TOxtB7a50kNAhAAAL5SgCRy/HI8yZoCzD84GcjYLMm/+z8EDkbQ++tmSS2EMEPfjYCNmvyz84PkbMx9N6aSWILEfzgZyNgsyb/7PwQORtD762ZJLYQwQ9+NgI2a/LPzg+RszH03ppJYgsR/OBnI2CzJv/s/BA5G0PvrZkkthDBD342AjZr8s/OD1b5Q6IAABJmSURBVJGzMfTemkliCxH84GcjYLMm/+z8EDkbQ++tmSS2EMEPfjYCNmvyz84PkbMx9N6aSWILEfzgZyNgsyb/7PwQORtD762ZJLYQwQ9+NgI2a/LPzg+RszH03ppJYgsR/OBnI2CzJv/s/BA5G0PvrZkkthDBD342AjZr8s/OD5GzMfTemkliCxH84GcjYLMm/+z8EDkbQ++tmSS2EMEPfjYCNmvyz86vxERul112kXnz5m12BLNnz5a99tor8ijr168vTZo0kTvvvLNYtnrd1VdfLevWrXPXb7/99u6/r7/+epk1a5bst99+8uabb8pRRx1VrP58usjXSfL1119L586d5fXXX5etttpKTjrpJBk2bJjUrFnTJ3wCP1s4fOWno/r444/l7LPPlgULFsjSpUttA43JGn42sMqvxETurbfektWrV7sR/Pzzz3LeeefJNddcI8cff3xyVA0aNJAKFSpEHmUmRW7JkiXy+OOPS/PmzaVWrVqRfSlpAx8nyapVq2SfffYRfdHp27eve7no0aOHlC1bVt59910nLL40+Nki4SM/HdH9998vV111ley+++7yww8/IHIRwxwSvxITuVSmmmS77rqrPPDAA9K2bduIuDe+PJMiZ3amhDvw8SEzatQoueKKK+T777+XGjVqOEJz5syRvffeW1544QU54YQTSpja/24PP1sofOSnI6pdu7bce++9MmPGDBkwYAAiFzHMIfHzWuRU/Lp16yYvv/yyrFy5Uv7+97+7N/5//vOfyZC8/fbbcvnll4subepb2S233OKqg8aNGyeXKxctWuT6ef7552XFihWy//77u8Ru2rSp6yfKcqU+mLWvN954Q3799VepU6eOW9rs1KmT6+vUU091/37mmWeSPo4dO1batGkjy5cvl0qVKrl/1Mfu3bsnr+nQoYN89NFHMn36dPczXR7997//LTNnzpT169fLAQcc4MZ29NFHR0pHHx8yWrXPnz/fLVWmtnr16rmKedCgQZHGGOfF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ecYNAQhAIA8IIHJ5EGSGCAEIQCBfCSBy+Rp5xg0BCEAgDwggcnkQ5JIa4rfffisDBgyQF198UX788UepWrWq7L///nLJJZfIWWedVcit5s2by4QJE2T8+PFy9tlnF/rdggULZMcdd5TXXntNmjRpUlLDydp9+/XrJzfeeKPMmzdPdthhh43u+8cff0jt2rXlyCOPlP/85z+SYJd64fbbb+9Y9+3bVxo1apQ133250bHHHis///yzzJgxY5Muff7557LnnnvKnXfeKQ0bNpSDDjpI9ttvP/nwww+ldOnShWw0X+fMmSOvv/66L8PLih/pzF8fcxCRy0q65N9N3nnnHTn55JOlevXqcvnll7sHyq+//ipPPfWUE7JLL71U7r777iQYfVA/88wzsssuu8js2bOlfPnyyd/lm8h99913svvuu8vQoUPlqquu2ih5Xn31VdGHuPI65ZRTnMjNmjVLRo0albx2/vz5MnLkSHnjjTdk0qRJcswxx+RVEj788MNywQUXOJFTsd+w9e7dW2699VZRTspbRU7Fbfjw4XLZZZflvcilM399zUFELq+mfnYGu3r1atljjz2kRo0a7iFbuXLlQjceNmyYXH311fLYY4/JOeec436nD2r9O5tarXXt2lX0IZRo+SZyOm4VseXLl8u0adM2CtpFF10kzz//vPzwww/uwazs9K37o48+KnTtmjVrpF69evKPf/zDvVzkU/vtt9+kVq1abtVg4MCBGw39b3/7mxx88MGuElZuKnIXXnihe3H44osvZLvttkva5Fsll+789TUHEbl8mvlZGmviLfrNN9+Uo446apN31QdMuXLlZMqUKUmR0+VMXTJSgfvss89cVactH0XuoYcecg9dXSbTKjjR9AFUs2ZN6dSpk9x2221Jdpt6wOgvtZpWfh988EGWou/PbfRl4KWXXnKV2lZbbZV0TKsUXaJMVMIJkZs5c6accMIJ0rJlS1fRJVq+iVy689fXHETk/JmTOeNJx44d5cknn5TFixcXOaYbbrhB9B+tVipWrOiqEa347r//fqlfv76rPh599NG8FblEJdK5c2fRPbpE06VerX51aWjffffdosjtvffeUrduXXn22WdzJr+KO5DJkydL48aN3XKtVsaJpsuR//3vf5OVcELkvvzyS3nrrbekQ4cOrrpL8M03kUt3/hYlciWdg4hccWcM1xWbwKmnnuoOmmyuenjwwQelbdu2bmlIl9RU5CpVqiRjx451b9innXaae+DoG3c+VnIKWysRXb79+uuv3VKuttNPP93tI7333nvJeCSWK6dPn5782cKFC92e3qBBg9ySnFYn+dYKCgpcbunBmzFjxrjh//777+4QU7t27ZKVcELkNBd1GfPwww+XbbfdVl5++WVnk28il+78VZHzMQcRuXyb+VkYb4sWLeSbb77ZaI8o9dYPPPCAe4jrA7xOnTqFRE6vO+mkk2TRokXuYa7/zqfTlQlOup+pp0kTy75aGSuH22+/3R3mSbRNna7U3+m+kp5u1aXNfG26WjB48GBR0dfDTBMnTpQzzjijUCWcKnIqirqEri9XWu3ptfkmcunOXz0dvWHzIQcRuXyd/TGO+8orrxTdU1q6dGmyAtnwdn369JGbb75ZVqxYIdtss81GIqcnLPVU3D333ONOEOajyCUqkWbNmsm9997rTqN26dLFVXLVqlUrJHLK65FHHkn+TE+17rbbboX2omIMubdda3Why7XK5rzzzpNWrVq5F7DUSnhDkdPBtG7dWt5991359NNP3QnXfPqEIN3562sOInLeTs9wHdM3Oq0udNP/uOOO2+RA9OCJPqh1v0Rb6nJlwkD3ox5//HF5++233bJTvnwnlwpMKxE9jaqVSNOmTd2JQV1+TG1Fna4MN4My67l+PqFL4ePGjXMnfnUJN7US3pTI6TeKeuCnV69e8v3337vKL1++k0t3/ha1J5fZaEbvDZGLzgyLLRDQo+sHHHCAlClTxu2r6anJ1KYf4Orb4nPPPeeWJYsSuSVLlrhPEfTte8SIEXkpclp16D6R7lW2adPGLbdpZYvIFX8a6n6cfpepOXTxxRdvVAlvSuS0dz3wo58f6EuECl2+iFy68xeRK35OcmUOEHj//fflxBNPdCcnVdD0hNWyZcuSf9WkZ8+ebrky0TZVyenvdIlOv6nTAwP5WMkpA92X07/QocuXiW/jELniT5KVK1e6ClhP7+pe24aVcFEit2rVKpe3eoiqQYMGeSNySjad+YvIFT8nuTJHCOj3Sbo0pBWbLv9UqVLFfYCroqffb234oE6crkz9+fr1692Huh9//HHeipxWInoasHv37skTgYhctEmiJ3n1RG/i27hU66JETq9JfLKhnyLkSyWXYBN1/iJy0XKSqyEAAQhAAAJmAuzJmRHSAQQgAAEI+EoAkfM1MvgFAQhAAAJmAoicGSEdQAACEICArwQQOV8jg18QgAAEIGAmgMiZEdIBBCAAAQj4SgCR8zUy+AUBCEAAAmYCiJwZIR1AAAIQgICvBBA5XyODXxCAAAQgYCaAyJkR0gEEIAABCPhKAJHzNTL4BQEIQAACZgKInBkhHUAAAhCAgK8EEDlfI4NfEIAABCBgJoDImRHSAQQgAAEI+EoAkfM1MvgFAQhAAAJmAoicGSEdQAACEICArwQQOV8jg18QgAAEIGAmgMiZEdIBBCAAAQj4SgCR8zUy+AUBCEAAAmYCiJwZIR1AAAIQgICvBBA5XyODXxCAAAQgYCaAyJkR0gEEIAABCPhKAJHzNTL4BQEIQAACZgKInBkhHUAAAhCAgK8EEDlfI4NfEIAABCBgJoDImRHSAQQgAAEI+EoAkfM1MvgFAQhAAAJmAv8P+v+I+bUvm+8AAAAASUVORK5CYII=" style="max-width:100%;" /></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">true_pos</span><span class="p">,</span> <span class="n">true_neg</span><span class="p">,</span> <span class="n">false_pos</span><span class="p">,</span> <span class="n">false_neg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">x_test</span><span class="p">:</span>
+
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
+
+        <span class="n">label</span><span class="p">,</span> <span class="n">stems</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">filename</span><span class="p">],</span> <span class="n">email_utils</span><span class="o">.</span><span class="n">load_stems</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">stems</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="n">stems</span> <span class="o">&amp;</span> <span class="n">blacklist</span><span class="p">:</span> <span class="c1"># Malli: 0</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">false_neg</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">true_neg</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># Malli: 1</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">true_pos</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">false_pos</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Esitellään tulos hieman siistimmin, sekaannusmatriisin (<em>confusion matrix</em>) muodossa. Matriisin sisältö on seuraavanlainen:</p>
+<table>
+<thead><tr>
+<th>Tulokset</th>
+<th>Tosi: 0</th>
+<th>Tosi: 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Malli: 0</td>
+<td>ON</td>
+<td>VP </td>
+</tr>
+<tr>
+<td>Malli: 1</td>
+<td>VN</td>
+<td>OP </td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="n">true_neg</span><span class="p">,</span><span class="n">false_pos</span><span class="p">],[</span><span class="n">false_neg</span><span class="p">,</span><span class="n">true_pos</span><span class="p">]],</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;model_0&#39;</span><span class="p">,</span><span class="s1">&#39;model_1&#39;</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;true_0&#39;</span><span class="p">,</span><span class="s1">&#39;true_1&#39;</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">results</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[11]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>true_0</th>
+      <th>true_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>model_0</th>
+      <td>18189</td>
+      <td>12985</td>
+    </tr>
+    <tr>
+      <th>model_1</th>
+      <td>2755</td>
+      <td>14769</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Prosenteissa esitettynä tulos on seuraavanlainen:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results_p</span> <span class="o">=</span> <span class="n">results</span><span class="o">/</span><span class="n">results</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">results_p</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[12]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>true_0</th>
+      <th>true_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>model_0</th>
+      <td>37.350610</td>
+      <td>26.664339</td>
+    </tr>
+    <tr>
+      <th>model_1</th>
+      <td>5.657317</td>
+      <td>30.327734</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Mallin tarkkuus on siis:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{results_p.iloc[0,0]+results_p.iloc[1,1]:.3f}%&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>67.678%
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     </div>
   </div>
