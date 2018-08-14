@@ -11788,7 +11788,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Cyber-Threat-Landscape" data-toc-modified-id="Cyber-Threat-Landscape-1">Cyber Threat Landscape</a></span></li><li><span><a href="#What-Is-Machine-Learning?" data-toc-modified-id="What-Is-Machine-Learning?-2">What Is Machine Learning?</a></span></li><li><span><a href="#Real-World-Uses-of-Machine-Learning-in-Security" data-toc-modified-id="Real-World-Uses-of-Machine-Learning-in-Security-3">Real-World Uses of Machine Learning in Security</a></span></li><li><span><a href="#Spam-Fighting:-An-Iterative-Approach" data-toc-modified-id="Spam-Fighting:-An-Iterative-Approach-4">Spam Fighting: An Iterative Approach</a></span><ul class="toc-item"><li><span><a href="#Mustalistaus-(Blacklisting)" data-toc-modified-id="Mustalistaus-(Blacklisting)-4.1">Mustalistaus (<em>Blacklisting</em>)</a></span></li></ul></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Cyber-Threat-Landscape" data-toc-modified-id="Cyber-Threat-Landscape-1">Cyber Threat Landscape</a></span></li><li><span><a href="#What-Is-Machine-Learning?" data-toc-modified-id="What-Is-Machine-Learning?-2">What Is Machine Learning?</a></span></li><li><span><a href="#Real-World-Uses-of-Machine-Learning-in-Security" data-toc-modified-id="Real-World-Uses-of-Machine-Learning-in-Security-3">Real-World Uses of Machine Learning in Security</a></span></li><li><span><a href="#Spam-Fighting:-An-Iterative-Approach" data-toc-modified-id="Spam-Fighting:-An-Iterative-Approach-4">Spam Fighting: An Iterative Approach</a></span><ul class="toc-item"><li><span><a href="#Mustalistaus" data-toc-modified-id="Mustalistaus-4.1">Mustalistaus</a></span></li><li><span><a href="#Yhteistyösuodatus" data-toc-modified-id="Yhteistyösuodatus-4.2">Yhteistyösuodatus</a></span></li><li><span><a href="#Naiivi-Bayes" data-toc-modified-id="Naiivi-Bayes-4.3">Naiivi Bayes</a></span></li></ul></li><li><span><a href="#Limitations-of-Machine-Learning-in-Security" data-toc-modified-id="Limitations-of-Machine-Learning-in-Security-5">Limitations of Machine Learning in Security</a></span></li></ul></div>
 </div>
 </div>
 </div>
@@ -11887,6 +11887,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Spam-Fighting:-An-Iterative-Approach">Spam Fighting: An Iterative Approach<a class="anchor-link" href="#Spam-Fighting:-An-Iterative-Approach">&#182;</a></h2><p>Roskapostisuodatus on jo aiemmin todettu yhdeksi tietoturvan osa-alueeksi, johon koneoppimista on sovellettu menestyksekkäästi. Tässä osiossa rakennetaankin roskapostisuodatin edeten iteratiivisesti yksinkertaisesti monimutkaisempaan. Mallien koulutukseen käytetään valmiiksi luokiteltuja sähköposteja sisältävää <a href="http://plg.uwaterloo.ca/~gvcormac/treccorpus07/">20017 TREC Public Spam Corpus</a> datasettiä. Tämän lisäksi käytämme hyödyksi <a href="https://github.com/oreilly-mlsec/book-resources/">kirjan GitHub-projektista</a> löytyviä aputoimintoja, joskin muokattuna omaan tarpeeseen.</p>
+<p>Tässä vaiheessa tärkeää ei ole ymmärtää menetelmien toimintatapoja, vaan käydä vain läpi eräitä käytännön koneoppimisen sovelluksia tietoturvaongelmaan.</p>
 
 </div>
 </div>
@@ -11895,8 +11896,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Mustalistaus-(Blacklisting)">Mustalistaus (<em>Blacklisting</em>)<a class="anchor-link" href="#Mustalistaus-(Blacklisting)">&#182;</a></h3><p>Mustalistan ideana on, että sieltä löytyvät sanat esiintyvät vain roskaposteissa.</p>
-<p>Ensimmäisessä iteraatiossa rakennetaan malli, joka tutkii sähköpostien sanat läpi ja luokittelee sähköpostit siten oikeaksi sähköpostiksi tai roskapostiksi. Keskiössä on tekstin käsittely siten, että sanoja käsitellään <code>nltk</code>-paketilla (Natural Language ToolKit) perusmuotoisiksi. Tämän jälkeen muodostetaan sanastot kummallekin sähköpostiluokalle, minkä jälkeen muodostetaan vain roskaposteissa esiintyvien sanojen mustalista.  Sähköpostidatasetin apufuntiomoduuli löytyy tiedostosta <code>utils/email_utils.py</code>. Se kannattaa käydä läpi, jotta tietää, mitä konepellin alla tapahtuu.</p>
+<h3 id="Mustalistaus">Mustalistaus<a class="anchor-link" href="#Mustalistaus">&#182;</a></h3><p>Mustalistauksen (<em>blacklisting</em>) ideana on, että sieltä löytyvät sanat esiintyvät vain roskaposteissa. Ensimmäisessä iteraatiossa rakennetaankin siis malli, joka tutkii sähköpostien sanat läpi ja luokittelee sähköpostit siten oikeaksi sähköpostiksi tai roskapostiksi. Keskiössä on tekstin käsittely siten, että sanoja käsitellään <code>nltk</code>-paketilla (Natural Language ToolKit) perusmuotoisiksi. Tämän jälkeen muodostetaan sanastot kummallekin sähköpostiluokalle, minkä jälkeen muodostetaan vain roskaposteissa esiintyvien sanojen mustalista.</p>
+<p>Sähköpostidatasetin apufuntiomoduuli löytyy tiedostosta <code>utils/email_utils.py</code>. Se kannattaa käydä läpi, jotta tietää, mitä konepellin alla tapahtuu.</p>
 <p>Ensin siis ladataan datasetti käyttöön määritetyistä sijainneista, minkä jälkeen siitä erotellaan koulutus- ja testisetit. Settien erottelun jälkeen muodostetaan koulutussetin pohjalta mustalista.</p>
 
 </div>
@@ -11904,7 +11905,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -11922,8 +11923,19 @@ div#notebook {
 
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">*</span><span class="n">TRAINING_SET_RATIO</span><span class="p">):]</span>
 <span class="n">x_test</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">*</span><span class="n">TRAINING_SET_RATIO</span><span class="p">)]</span>
+</pre></div>
 
-<span class="n">ham_words</span><span class="p">,</span> <span class="n">spam_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(),</span> <span class="nb">set</span><span class="p">()</span>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ham_words</span><span class="p">,</span> <span class="n">spam_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(),</span> <span class="nb">set</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">x_train</span><span class="p">:</span>
 
@@ -12036,12 +12048,12 @@ Malli löysi kaikenkaikkiaan 55564 mustalistattua sanaa.
         <span class="k">if</span> <span class="ow">not</span> <span class="n">stems</span><span class="p">:</span>
             <span class="k">continue</span>
 
-        <span class="k">if</span> <span class="n">stems</span> <span class="o">&amp;</span> <span class="n">blacklist</span><span class="p">:</span> <span class="c1"># Malli: 0</span>
+        <span class="k">if</span> <span class="n">stems</span> <span class="o">&amp;</span> <span class="n">blacklist</span><span class="p">:</span> <span class="c1"># Malli: Spam</span>
             <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="n">false_neg</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">true_neg</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span> <span class="c1"># Malli: 1</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># Malli: Mail</span>
             <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="n">true_pos</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">else</span><span class="p">:</span>
@@ -12051,11 +12063,6 @@ Malli löysi kaikenkaikkiaan 55564 mustalistattua sanaa.
                        <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;model_0&#39;</span><span class="p">,</span> <span class="s1">&#39;model_1&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;true_0&#39;</span><span class="p">,</span> <span class="s1">&#39;true_1&#39;</span><span class="p">])</span>
 <span class="n">results_p</span> <span class="o">=</span> <span class="n">results</span><span class="o">/</span><span class="n">results</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset määrissä:&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset prosenteissa:&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">results_p</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Mallin tarkkuus (ON+OP): {results_p.iloc[0,0]+results_p.iloc[1,1]:.3f}%&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset määrissä:&quot;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset prosenteissa:&quot;</span><span class="p">)</span>
@@ -12201,6 +12208,504 @@ Malli löysi kaikenkaikkiaan 55564 mustalistattua sanaa.
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Huomionarvoista on, että malli löytää paljon paremmin roskapostit kuin oikeat postit. Oikeista posteista lähes puolet (~13K) luokitellaan roskaposteiksi, kun taas roskaposteista vain alle kolmisen tuhatta luokitellaan väärin.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Yhteisty&#246;suodatus">Yhteisty&#246;suodatus<a class="anchor-link" href="#Yhteisty&#246;suodatus">&#182;</a></h3><p>Mustalistausta hieman kehittyneempi algoritmi on yhteistyösuodatus (<em>collaborative filtering</em>), jonka perusajatuksen mukaan samankaltaiset sähköpostit muodostavat tietyllä tapaa käsiteltynä samankaltaisia tiivisteitä (<em>hash</em>). Samaan perusajatukseen kuuluu myös oletus, että roskapostien lähettäjät muodostavat roskaposteja jonkin samankaltaisia posteja tuottavan automaation avulla. Implementaatiossa hyödynnetään <a href="https://en.wikipedia.org/wiki/MinHash">MinHash</a>-algoritmin <a href="https://github.com/ekzhu/datasketch">Python implementaatiota</a>, jossa sähköpostien sanasisällöistä muodostetaan keskenään vertailtavia tiivisteitä ja sen jälkeen lasketaan tiivisteiden samankaltaisuus eli <a href="https://en.wikipedia.org/wiki/Jaccard_index">Jaccardin samankaltaisuusindeksi</a> (<em>Jaccard similarity index</em>).</p>
+<p>Tässä toteutuksessa hyödynnetään edellisiä datoja. Siksi niitä ei ole tarpeen alustaa uudelleen, mikäli notebookin solut ajetaan järjestyksessä.</p>
+<p>Ensin asennetaan tarvittava moduuli.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%bash
+pip install datasketch -U
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Collecting datasketch
+  Downloading https://files.pythonhosted.org/packages/d4/28/384b1a1129705df345961e778c85d72efdc05609a2373c7a867d73227304/datasketch-1.2.7-py2.py3-none-any.whl (63kB)
+Requirement already satisfied, skipping upgrade: numpy&gt;=1.11 in /home/petteri/anaconda3/envs/ml/lib/python3.6/site-packages (from datasketch) (1.14.5)
+Collecting redis&gt;=2.10.0 (from datasketch)
+  Downloading https://files.pythonhosted.org/packages/3b/f6/7a76333cf0b9251ecf49efff635015171843d9b977e4ffcf59f9c4428052/redis-2.10.6-py2.py3-none-any.whl (64kB)
+Installing collected packages: redis, datasketch
+Successfully installed datasketch-1.2.7 redis-2.10.6
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tämän jälkeen koulutetaan MinHash-malli käyttämällä roskaposteiksi luokiteltuja sähköposteja koulutusdatana. Jokaisesta sellaisesta lasketaan tiiviste, joka sitten syötetään tiivisteiden samankaltaisuuden huomioivaan (<em>locality-sensitive hashing, LSH</em>) malliin.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">datasketch</span> <span class="k">import</span> <span class="n">MinHash</span><span class="p">,</span> <span class="n">MinHashLSH</span>
+
+<span class="n">spam_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_train</span> <span class="k">if</span> <span class="n">labels</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">lsh_spam</span> <span class="o">=</span> <span class="n">MinHashLSH</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">num_perm</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">spam_files</span><span class="p">:</span>
+
+    <span class="n">minhash</span> <span class="o">=</span> <span class="n">MinHash</span><span class="p">(</span><span class="n">num_perm</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+    <span class="n">stems</span> <span class="o">=</span> <span class="n">email_utils</span><span class="o">.</span><span class="n">load_stems</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stems</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        
+        <span class="p">[</span><span class="n">minhash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">stem</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">stem</span> <span class="ow">in</span> <span class="n">stems</span><span class="p">]</span>
+        <span class="n">lsh_spam</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">minhash</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Tämän jälkeen testataan mallin kyvykkyyttä testidatalla. Kuten mustalistauksenkin kanssa, kyvykkyyttä tutkitaan sekaannusmatriisilla.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">true_pos</span><span class="p">,</span> <span class="n">true_neg</span><span class="p">,</span> <span class="n">false_pos</span><span class="p">,</span> <span class="n">false_neg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">x_test</span><span class="p">:</span>
+
+    <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
+        
+        <span class="n">minhash</span> <span class="o">=</span> <span class="n">MinHash</span><span class="p">(</span><span class="n">num_perm</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+        <span class="n">label</span><span class="p">,</span> <span class="n">stems</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">file</span><span class="p">],</span> <span class="n">email_utils</span><span class="o">.</span><span class="n">load_stems</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stems</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            
+            <span class="p">[</span><span class="n">minhash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">stem</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">stem</span> <span class="ow">in</span> <span class="n">stems</span><span class="p">]</span>
+            <span class="n">model_matches</span> <span class="o">=</span> <span class="n">lsh_spam</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">minhash</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">model_matches</span><span class="p">:</span> <span class="c1"># Malli: Spam</span>
+                <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">false_neg</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">true_neg</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span> <span class="c1"># Malli: Mail</span>
+                <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">true_pos</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">false_pos</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="n">true_neg</span><span class="p">,</span> <span class="n">false_pos</span><span class="p">],</span> <span class="p">[</span><span class="n">false_neg</span><span class="p">,</span> <span class="n">true_pos</span><span class="p">]],</span>
+                       <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;model_0&#39;</span><span class="p">,</span> <span class="s1">&#39;model_1&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;true_0&#39;</span><span class="p">,</span> <span class="s1">&#39;true_1&#39;</span><span class="p">])</span>
+<span class="n">results_p</span> <span class="o">=</span> <span class="n">results</span><span class="o">/</span><span class="n">results</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset määrissä:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset prosenteissa:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">results_p</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Mallin tarkkuus (ON+OP): {results_p.iloc[0,0]+results_p.iloc[1,1]:.3f}%&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tulokset määrissä:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>true_0</th>
+      <th>true_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>model_0</th>
+      <td>24109</td>
+      <td>6820</td>
+    </tr>
+    <tr>
+      <th>model_1</th>
+      <td>231</td>
+      <td>17293</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tulokset prosenteissa:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>true_0</th>
+      <th>true_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>model_0</th>
+      <td>49.757497</td>
+      <td>14.075496</td>
+    </tr>
+    <tr>
+      <th>model_1</th>
+      <td>0.476751</td>
+      <td>35.690257</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Mallin tarkkuus (ON+OP): 85.448%
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Roskapostien tiivisteiden samankaltaisuuteen perustuva malli saavutti jo huomattavasti korkeamman luokittelutuloksen.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Naiivi-Bayes">Naiivi Bayes<a class="anchor-link" href="#Naiivi-Bayes">&#182;</a></h3><p>Viimeinen ensimmäisen luvun esimerkissä implementoitu malli on nimeltään Naiivi Bayesin luokittelija (<em>Naive Bayes classifier</em>). Sähköpostien kantasanojen mukaan luokittelu toimii vain niin pitkälle, kun datasta löytyy riittävän paljon opittavaa dataa etenkin roskaposteista. Malli koulutetaan syöttämällä sille sähköpostit lähestulkoon raakadatana ja kertomalla sille kunkin sähköpostin oikea vastaus (<em>spam</em>/<em>ham</em>). Raakadata on tosin ehkä hieman harhaanjohtava käsite, sillä sanoista muodostetaan sanojen säkki (<em>bag of words</em>). Siinä jokaisella sanalla on oma sarakkeensa. Kullekin viestille muodostetaan tämän jälkeen vektori, jossa on lukumäärä kullekin sanalle (<code>0 ... n</code>).</p>
+<p>Kuten edellä, tässäkin esimerkissä käytetään mustalistauksen muuttujia.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="k">import</span> <span class="n">MultinomialNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="k">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">confusion_matrix</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">email</span> <span class="o">=</span> <span class="n">email_utils</span><span class="o">.</span><span class="n">extract_email_text</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+    <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">email</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">file</span><span class="p">])</span>
+
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">TRAINING_SET_RATIO</span><span class="p">)</span>
+
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
+<span class="n">x_train_vector</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_train</span><span class="p">)</span>
+<span class="n">x_test_vector</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">MultinomialNB</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train_vector</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_vector</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span>
+                       <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;model_0&#39;</span><span class="p">,</span> <span class="s1">&#39;model_1&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;true_0&#39;</span><span class="p">,</span> <span class="s1">&#39;true_1&#39;</span><span class="p">])</span>
+<span class="n">results_p</span> <span class="o">=</span> <span class="n">results</span><span class="o">/</span><span class="n">results</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset määrissä:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset prosenteissa:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">results_p</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Mallin tarkkuus (ON+OP): {results_p.iloc[0,0]+results_p.iloc[1,1]:.3f}%&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tulokset määrissä:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>true_0</th>
+      <th>true_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>model_0</th>
+      <td>14138</td>
+      <td>880</td>
+    </tr>
+    <tr>
+      <th>model_1</th>
+      <td>160</td>
+      <td>7448</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tulokset prosenteissa:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>true_0</th>
+      <th>true_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>model_0</th>
+      <td>62.485636</td>
+      <td>3.889331</td>
+    </tr>
+    <tr>
+      <th>model_1</th>
+      <td>0.707151</td>
+      <td>32.917882</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Mallin tarkkuus (ON+OP): 95.404%
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kyseinen malli toimi vieläkin paremmin parantaen tarkkuutta jo hyvin korkealle. Vieläkin parempaan luokittelutulokseen päästäisiin, mikäli jo koulutetuista malleista muodostettaisiin monesta mallista koostuva ensemble.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Limitations-of-Machine-Learning-in-Security">Limitations of Machine Learning in Security<a class="anchor-link" href="#Limitations-of-Machine-Learning-in-Security">&#182;</a></h2><p>Todellisuudessa edes sähköpostien luokittelu ei ole kovinkaan yksinkertaista, sillä hyökkääjät kehittävät menetelmiään samaan tahtiin puolustajien kanssa. Ja yleisemminkin koneoppimisellakin on rajoitteensa, myös tietoturva-asioissakin. Todellisuudessa luokittelutarkkuutta kiinnostavampia asioita voivat olla aivan muut asiat, kuten selittävät tekijät. Näihin taas on mallista riippuen erityisenkin vaikeaa päästä käsiksi.</p>
+<p>Koneoppimismenetelmät ovat myös kovin tapauskohtaisia. Jossain toimiva malli ei ole taatusti toimiva jossain toisessa tilanteessa. Samoin menetelmille ei voida antaa koko kuvaa käsiteltäväksi - tämä rajaa suuren osan hiljaisesta, kulttuurisesta ja pitkältä eri tilanteista opitusta tiedosta mallintamisen ulkopuolelle. Ihmiset eivät katso vain sähköpostin sanoja, vaan myös monia muitakin tekijöitä, jotka eivät suoranaisesti edes ole johdettavissa sähköpostin sisällöstä.</p>
+<p>Samoin mallit voivat oppia toimimaan erittäinkin tehokkaasti koulutuksen aikana, mutta ns. tuotantokäytössä osoittautuvat täysin käyttökelvottomiksi. Tällöin malli oppinut koulutusdatan lähes täysin, milloin sen sanotaan ylisovittuneen (<em>overfit</em>). Näin sovittunutta mallia ei voi käyttää uusien, sen ennalta havaitsemattomien havaintojen luotettavaan tunnistamiseen.</p>
+<p>Joten vaikka koneoppiminen onkin tämän kirjan pääaiheita, ei sillä voida kuitenkaan jokaista ongelmaa ratkaista.</p>
+
+</div>
+</div>
 </div>
     </div>
   </div>
