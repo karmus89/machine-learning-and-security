@@ -11908,7 +11908,9 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">utils</span> <span class="k">import</span> <span class="n">email_utils</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span>
 
 <span class="n">ROOT_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()),</span><span class="s1">&#39;datasets&#39;</span><span class="p">,</span><span class="s1">&#39;trec07p&#39;</span><span class="p">)</span>
 <span class="n">DATA_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ROOT_DIR</span><span class="p">,</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
@@ -11986,46 +11988,12 @@ Malli löysi kaikenkaikkiaan 55564 mustalistattua sanaa.
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">true_pos</span><span class="p">,</span> <span class="n">true_neg</span><span class="p">,</span> <span class="n">false_pos</span><span class="p">,</span> <span class="n">false_neg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
-
-<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">x_test</span><span class="p">:</span>
-
-    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
-
-        <span class="n">label</span><span class="p">,</span> <span class="n">stems</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">filename</span><span class="p">],</span> <span class="n">email_utils</span><span class="o">.</span><span class="n">load_stems</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">stems</span><span class="p">:</span>
-            <span class="k">continue</span>
-
-        <span class="k">if</span> <span class="n">stems</span> <span class="o">&amp;</span> <span class="n">blacklist</span><span class="p">:</span> <span class="c1"># Malli: 0</span>
-            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">false_neg</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">true_neg</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span> <span class="c1"># Malli: 1</span>
-            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="n">true_pos</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">false_pos</span> <span class="o">+=</span> <span class="mi">1</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Esitellään tulos hieman siistimmin, sekaannusmatriisin (<em>confusion matrix</em>) muodossa. Matriisin sisältö on seuraavanlainen:</p>
+<p>Huomionarvoista on, että <a href="https://github.com/oreilly-mlsec/book-resources/blob/master/chapter1/spam-fighting-blacklist.ipynb">kirjan implementaatio</a> laskee tulokset väärin. Sen mukaan mallin ennustaessa roskapostia (0) ja todellisuuden ollessa oikea posti (1) on kyseessä väärä positiivinen, vaikka kyseessä on väärä negativiinen mallin näkökulmasta.</p>
+<p>Tulokset esitetään sekaannusmatriisin (<em>confusion matrix</em>) muodossa. Matriisin sisältö on seuraavanlainen:</p>
 <table>
 <thead><tr>
 <th>Tulokset</th>
@@ -12052,14 +12020,47 @@ Malli löysi kaikenkaikkiaan 55564 mustalistattua sanaa.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">true_pos</span><span class="p">,</span> <span class="n">true_neg</span><span class="p">,</span> <span class="n">false_pos</span><span class="p">,</span> <span class="n">false_neg</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">x_test</span><span class="p">:</span>
+
+    <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATA_DIR</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">:</span>
+
+        <span class="n">label</span><span class="p">,</span> <span class="n">stems</span> <span class="o">=</span> <span class="n">labels</span><span class="p">[</span><span class="n">filename</span><span class="p">],</span> <span class="n">email_utils</span><span class="o">.</span><span class="n">load_stems</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">stems</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="k">if</span> <span class="n">stems</span> <span class="o">&amp;</span> <span class="n">blacklist</span><span class="p">:</span> <span class="c1"># Malli: 0</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">false_neg</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">true_neg</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span> <span class="c1"># Malli: 1</span>
+            <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">true_pos</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">false_pos</span> <span class="o">+=</span> <span class="mi">1</span>
+
 <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[[</span><span class="n">true_neg</span><span class="p">,</span> <span class="n">false_pos</span><span class="p">],</span> <span class="p">[</span><span class="n">false_neg</span><span class="p">,</span> <span class="n">true_pos</span><span class="p">]],</span>
                        <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;model_0&#39;</span><span class="p">,</span> <span class="s1">&#39;model_1&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;true_0&#39;</span><span class="p">,</span> <span class="s1">&#39;true_1&#39;</span><span class="p">])</span>
 <span class="n">results_p</span> <span class="o">=</span> <span class="n">results</span><span class="o">/</span><span class="n">results</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
-<span class="n">results</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset määrissä:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset prosenteissa:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">results_p</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Mallin tarkkuus (ON+OP): {results_p.iloc[0,0]+results_p.iloc[1,1]:.3f}%&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset määrissä:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tulokset prosenteissa:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">results_p</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Mallin tarkkuus (ON+OP): {results_p.iloc[0,0]+results_p.iloc[1,1]:.3f}%&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12072,11 +12073,22 @@ Malli löysi kaikenkaikkiaan 55564 mustalistattua sanaa.
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tulokset määrissä:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
+<div class="output_html rendered_html output_subarea ">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -12117,42 +12129,24 @@ Malli löysi kaikenkaikkiaan 55564 mustalistattua sanaa.
 
 </div>
 
-</div>
-</div>
+<div class="output_area">
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Prosenteissa esitettynä tulos on seuraavanlainen:</p>
+<div class="prompt"></div>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results_p</span>
-</pre></div>
 
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tulokset prosenteissa:
+</pre>
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[12]:</div>
+<div class="prompt"></div>
 
 
 
-<div class="output_html rendered_html output_subarea output_execute_result">
+<div class="output_html rendered_html output_subarea ">
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -12193,42 +12187,13 @@ Malli löysi kaikenkaikkiaan 55564 mustalistattua sanaa.
 
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Mallin tarkkuus on siis:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;{results_p.iloc[0,0]+results_p.iloc[1,1]:.3f}%&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
 <div class="output_area">
 
 <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>67.678%
+<pre>Mallin tarkkuus (ON+OP): 67.678%
 </pre>
 </div>
 </div>
