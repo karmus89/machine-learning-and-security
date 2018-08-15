@@ -11788,7 +11788,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Sisällysluettelo<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Classifying-and-Clustering" data-toc-modified-id="Classifying-and-Clustering-1">Classifying and Clustering</a></span></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Classifying-and-Clustering" data-toc-modified-id="Classifying-and-Clustering-1">Classifying and Clustering</a></span><ul class="toc-item"><li><span><a href="#Machine-Learning:-Problems-and-Approaches" data-toc-modified-id="Machine-Learning:-Problems-and-Approaches-1.1">Machine Learning: Problems and Approaches</a></span></li></ul></li></ul></div>
 </div>
 </div>
 </div>
@@ -11796,7 +11796,21 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Classifying-and-Clustering">Classifying and Clustering<a class="anchor-link" href="#Classifying-and-Clustering">&#182;</a></h1>
+<h1 id="Classifying-and-Clustering">Classifying and Clustering<a class="anchor-link" href="#Classifying-and-Clustering">&#182;</a></h1><p>Tässä luvussa käydään läpi tietoturvasovellusten käyttökelpoisimpia koneoppimismenetelmiä, niiden perusteista aina käyttökelpoisen koneoppimistyökalupakin rakentamiseen. Luvussa pysyttäydytään menetelmien toiminnan ymmärtämisen tasossa menemättä nyansseihin.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Machine-Learning:-Problems-and-Approaches">Machine Learning: Problems and Approaches<a class="anchor-link" href="#Machine-Learning:-Problems-and-Approaches">&#182;</a></h2><p>Koneoppimismenetelmät ovat pohjimmiltaan algoritmeja ja historiallista dataa hyödyntäviä prosesseja tulevaisuuden tapahtumien luokitteluun (<em>classification</em>) tai arvojen ennustamiseen (<em>regression</em>). Luokittelu voi olla <em>binääristä</em> joko-tai-luokittelua tai sitten luokittelua yhdeksi tai useaksi monesta mahdollisesta luokasta (<em>multiclass classification</em>).</p>
+<p>Tietoturvaan liittyvät ongelmat liittyvät suuressa määrin jatkuvaan havainnointiin, jossa kukin uusi tilanne on kyettävä luokittelemaan joko turvalliseksi tai uhaksi. Näitä tilanteita ovat esimerkiksi jokainen uusi tiedosto, sähköposti, kirjautumisyritys ja palvelimelle tullut pyyntö. Ihmisvoimin käsitellen tehtävä osoittautuu piankin mahdottomaksi, mutta käyttämällä dataa eli vaikkapa kirjautumistietojen, tiedostojen, yhteydenottopyyntöjen jne. lokitiedostoja (<em>logs</em>) yhdessä datasta piirteitä oppivien mallien kanssa tehtävä helpottuu ja voidaan myös automatisoida.</p>
+<p>Arvojen ennustaminen eli regressio tulee kyseeseen, kun halutaan saada luotettava arvio vaikkapa johonkin työntekijään kohdistuneista kalasteluyrityksistä (<em>phishing</em>) kuukautta kohden. Tällöin logien sijasta käytetään muita muuttujia, kuten henkilön asema työpaikalla, käyttöoikeudet, viran pituus yms. Mikäli taas arvoja ennustetaan datasta, jossa on mukana myös ajan ulottuvuus eli peräkkäisiä havaintoja joiden oletetaan vaikuttavan ennustettavaan tulokseen, ollaan tekemisissä aikasarja-analyysin (<em>time series analysis</em>) kanssa. Tietoturvakonteksissa aikasarja-analyysiä voidaan käyttää ennustamaan normaalia kirjautumisten määrää vaikkapa jostain toimipisteestä, mitä sitten voidaan verrata ja tarvittaessa huomata mahdollinen kirjautumisten määrän poikkeava kasvu. Esimerkeistä viimeisin on hyvä esimerkki samalla myös poikkeamien havaitsemisesta (<em>anomaly detection</em>).</p>
+<p>Poikkeamia voidaan havaita myös ryhmittelymenetelmillä (<em>clustering</em>). Tällöin menetelmälle syötetty data ryhmitellään eli <em>klusteroidaan</em> havaintojen samankaltaisuuden perusteella suuremmiksi pääryhmiksi. Ryhmittelymenetelmälle voidaan opettaa esimerkiksi turvallisia tapahtumia. Sen kohdatessa uhaksi tulkittavan havainnon jää kyseinen havainto opittujen ryhmien ulkopuolelle. Ryhmittelyllä voidaan saada ymmärrystä myös vaikkapa sivustolle lähetetyistä pyynnöistä - mitkä pyynnöistä ovat todennäköisesti bottiverkon (<em>botnet</em>) lähettämiä pyyntöjä, mitkä taas virallisia.</p>
+<p>Koneoppiminen jaetaan perinteisesti myös ohjattuihin (<em>supervised</em>) ja ohjaamattomiin (<em>unsupervised</em>) menetelmiin. Luokittelu- ja regressiomenetelmät ovat perinteisesti ohjattuja, jolloin niitä koulutettaessa menetelmille syötetään havaintotiedon lisäksi myös oikea vastaus - luokka tai lukuarvo. Käytännön esimerkki ohjatuista menetelmistä on edellisen luvun roskapostien tunnistaminen, jossa luokka oli ennalta jo tiedossa. Ryhmittelymenetelmät pohjaavaat lähes aina dataan itseensä etsien ja ryhmitellen dataa sen sisäisten ominaisuuksien perusteella. Tämä on ohjaamatonta oppimista, eli menetelmän annetaan itse määrittää datalle ominaiset ryhmät ja niiden ominaisuudet.</p>
+
 </div>
 </div>
 </div>
