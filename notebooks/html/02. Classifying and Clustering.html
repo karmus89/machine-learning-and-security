@@ -11788,7 +11788,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Sisällysluettelo<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Classifying-and-Clustering" data-toc-modified-id="Classifying-and-Clustering-1">Classifying and Clustering</a></span><ul class="toc-item"><li><span><a href="#Machine-Learning:-Problems-and-Approaches" data-toc-modified-id="Machine-Learning:-Problems-and-Approaches-1.1">Machine Learning: Problems and Approaches</a></span></li></ul></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Classifying-and-Clustering" data-toc-modified-id="Classifying-and-Clustering-1">Classifying and Clustering</a></span><ul class="toc-item"><li><span><a href="#Machine-Learning:-Problems-and-Approaches" data-toc-modified-id="Machine-Learning:-Problems-and-Approaches-1.1">Machine Learning: Problems and Approaches</a></span></li><li><span><a href="#Machine-Learning-in-Practice:-A-Worked-Example" data-toc-modified-id="Machine-Learning-in-Practice:-A-Worked-Example-1.2">Machine Learning in Practice: A Worked Example</a></span></li></ul></li></ul></div>
 </div>
 </div>
 </div>
@@ -11810,6 +11810,505 @@ div#notebook {
 <p>Arvojen ennustaminen eli regressio tulee kyseeseen, kun halutaan saada luotettava arvio vaikkapa johonkin työntekijään kohdistuneista kalasteluyrityksistä (<em>phishing</em>) kuukautta kohden. Tällöin logien sijasta käytetään muita muuttujia, kuten henkilön asema työpaikalla, käyttöoikeudet, viran pituus yms. Mikäli taas arvoja ennustetaan datasta, jossa on mukana myös ajan ulottuvuus eli peräkkäisiä havaintoja joiden oletetaan vaikuttavan ennustettavaan tulokseen, ollaan tekemisissä aikasarja-analyysin (<em>time series analysis</em>) kanssa. Tietoturvakonteksissa aikasarja-analyysiä voidaan käyttää ennustamaan normaalia kirjautumisten määrää vaikkapa jostain toimipisteestä, mitä sitten voidaan verrata ja tarvittaessa huomata mahdollinen kirjautumisten määrän poikkeava kasvu. Esimerkeistä viimeisin on hyvä esimerkki samalla myös poikkeamien havaitsemisesta (<em>anomaly detection</em>).</p>
 <p>Poikkeamia voidaan havaita myös ryhmittelymenetelmillä (<em>clustering</em>). Tällöin menetelmälle syötetty data ryhmitellään eli <em>klusteroidaan</em> havaintojen samankaltaisuuden perusteella suuremmiksi pääryhmiksi. Ryhmittelymenetelmälle voidaan opettaa esimerkiksi turvallisia tapahtumia. Sen kohdatessa uhaksi tulkittavan havainnon jää kyseinen havainto opittujen ryhmien ulkopuolelle. Ryhmittelyllä voidaan saada ymmärrystä myös vaikkapa sivustolle lähetetyistä pyynnöistä - mitkä pyynnöistä ovat todennäköisesti bottiverkon (<em>botnet</em>) lähettämiä pyyntöjä, mitkä taas virallisia.</p>
 <p>Koneoppiminen jaetaan perinteisesti myös ohjattuihin (<em>supervised</em>) ja ohjaamattomiin (<em>unsupervised</em>) menetelmiin. Luokittelu- ja regressiomenetelmät ovat perinteisesti ohjattuja, jolloin niitä koulutettaessa menetelmille syötetään havaintotiedon lisäksi myös oikea vastaus - luokka tai lukuarvo. Käytännön esimerkki ohjatuista menetelmistä on edellisen luvun roskapostien tunnistaminen, jossa luokka oli ennalta jo tiedossa. Ryhmittelymenetelmät pohjaavaat lähes aina dataan itseensä etsien ja ryhmitellen dataa sen sisäisten ominaisuuksien perusteella. Tämä on ohjaamatonta oppimista, eli menetelmän annetaan itse määrittää datalle ominaiset ryhmät ja niiden ominaisuudet.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Machine-Learning-in-Practice:-A-Worked-Example">Machine Learning in Practice: A Worked Example<a class="anchor-link" href="#Machine-Learning-in-Practice:-A-Worked-Example">&#182;</a></h2><p>Tässä esimerkissä käytetään ostotapahtumista (<em>transaction</em>) muodostettua datasettiä, joka löytyy <a href="https://github.com/oreilly-mlsec/book-resources/blob/master/chapter2/datasets/payment_fraud.csv">kirjan GitHubista</a>. Datasetissä on viisi piirrettä talletettuna kustakin tapahtumasta sekä tieto siitä, oliko ostotapahtuma petos (<em>fraud</em>) vai ei. Tieto siitä, onko jokin ostotapahtuma ollut petos vai ei, on saatu keräämällä tietoa tapahtumiin liittyvistä mitätöintipyynnöistä - mikäli käyttäjä on epäillyt maksuvälineensä väärinkäyttöä, hän on pyytänyt tehdyn ostoksen mitätöinti ja rahojen palautusta. Pyynnöt eivät kuitenkaan ole reaaliaikaisesti käytettävissä, sillä niitä tehdään jopa kuukausia tapahtuman jälkeen. Tällöin myös ostetut tavarat on ehditty jo lähettää, eikä niitä juuri saada enää takaisin. Siksi onkin merkittävää kyetä ennustamaan, mikäli jokin ostotapahtuma ilmentää petollisia piirteitä ja estää mahdollinen liiketoimintahäviö jo ennen tavaran lähetystä.</p>
+<p>Ensin ladataan tiedot käyttöön ja tarkastellaan muutamaa ensimmäistä riviä.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">ROOT_DIR</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="n">DATASET_PATH</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ROOT_DIR</span><span class="p">,</span><span class="s1">&#39;datasets&#39;</span><span class="p">,</span><span class="s1">&#39;payment_fraud.csv&#39;</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">DATASET_PATH</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[7]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>accountAgeDays</th>
+      <th>numItems</th>
+      <th>localTime</th>
+      <th>paymentMethod</th>
+      <th>paymentMethodAgeDays</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>29</td>
+      <td>1</td>
+      <td>4.745402</td>
+      <td>paypal</td>
+      <td>28.204861</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>725</td>
+      <td>1</td>
+      <td>4.742303</td>
+      <td>storecredit</td>
+      <td>0.000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>845</td>
+      <td>1</td>
+      <td>4.921318</td>
+      <td>creditcard</td>
+      <td>0.000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>503</td>
+      <td>1</td>
+      <td>4.886641</td>
+      <td>creditcard</td>
+      <td>0.000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2000</td>
+      <td>1</td>
+      <td>5.040929</td>
+      <td>creditcard</td>
+      <td>0.000000</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Datasetin muuttujat ovat yhtä lukuunottamatta sellaisenaan käytettävässä muodossa. Maksutapaa ilmaiseva <code>paymentMethod</code> sisältää kuitenkin kategorisia arvoja, joiden kanssa on toimittava erityistä huomiota kiinnittäen. Koska koneoppimismenetelmät toimivat luvuilla, on tekstimuotoiset tiedot ensinnäkin muutettava luvuiksi. Pelkkä <code>paypal =&gt; 1, storecredit =&gt; 2, ...</code> muunnos ei kuitenkaan ole kelvollinen, sillä muuttujilla ei ole lineaarista suhdetta toisiinsa - Paypal ei ole maksuvälineenä suurempi, parempi tai huonompi, kuin käteinen.</p>
+<p>Kategorisia muuttujia sisältävä sarake tavataan usein hajoittaa useaksi sarakkeeksi siten, että jokainen hajoitettu sarake vastaa yhtä alkuperäisen sarakkeen uniikkia arvoa. Toisin sanoen sarake</p>
+<table>
+<thead><tr>
+<th>Sankarit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nalle Puh</td>
+</tr>
+<tr>
+<td>Hämis</td>
+</tr>
+<tr>
+<td>Mustanaamio</td>
+</tr>
+</tbody>
+</table>
+<p>hajoitettaisiin useaksi sarakkeeksi seuraavasti:</p>
+<table>
+<thead><tr>
+<th>Sankarit: Nalle Puh</th>
+<th>Sankarit: Hämis</th>
+<th>Sankarit: Mustanaamio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Tämä tunnetaan valemuuttujien (<em>dummy variables</em>) muodostamisena sekä <a href="https://en.wikipedia.org/wiki/One-hot"><em>one-hottauksena</em></a>. Valemuuttujien muodostamisen lisäksi, vaikka kirjassa tätä ei toistaiseksi käsitellä, on myös tavallista varmistua datasetin muuttujien <em>yksiselitteisyydestä</em>. Esimerkkimme taulukossa meillä on kolme arvoa ja loogisesti seuraten sen hajoitetussa versiossa kolme saraketta. Hajoitettu taulukko sisältää kuitenkin enemmän informaatiota, kuin mitä tarvitaan sankarin määrittämiseen yksiselitteisesti. Jos sankari on Nalle Puh tai Hämis, arvo on yksiselitteinen. Jos sankari ei ole kumpikään näistä, se on edelleen yksiselitteinen, sillä ainoa jäljelle jäävä vaihtoehto on Mustanaamio. Tieto Mustanaamiosta on siis ylimääräinen ja se itseasiassa aiheuttaa mallin <a href="https://en.wikipedia.org/wiki/Multicollinearity">piirteiden selityskykyä alentavan ongelman</a>, vaikkakaan suorituskyky tarkkuuden näkökulmasta ei kärsisikään.</p>
+<p>Siispä seuraavaksi korvataan <code>paymentMethod</code>-sarake sen arvoista muodostetuilla valesarakkeilla jättäen yksi sarakkeista pois.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Unique paymentMethod categories: {list(dataset.paymentMethod.unique())}&#39;</span><span class="p">)</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">&#39;paymentMethod&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;paymentMethod&#39;</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Unique paymentMethod categories: [&#39;paypal&#39;, &#39;storecredit&#39;, &#39;creditcard&#39;]
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[8]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>accountAgeDays</th>
+      <th>numItems</th>
+      <th>localTime</th>
+      <th>paymentMethodAgeDays</th>
+      <th>label</th>
+      <th>paymentMethod_paypal</th>
+      <th>paymentMethod_storecredit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>29</td>
+      <td>1</td>
+      <td>4.745402</td>
+      <td>28.204861</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>725</td>
+      <td>1</td>
+      <td>4.742303</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>845</td>
+      <td>1</td>
+      <td>4.921318</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>503</td>
+      <td>1</td>
+      <td>4.886641</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2000</td>
+      <td>1</td>
+      <td>5.040929</td>
+      <td>0.000000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Datan esikäsittely on nyt valmis. Seuraavaksi jatketaan jo opittuun malliin jakaen datasetti koulutus ja testidatoihin. Koulutuksen kohteena (<em>target</em>) <code>y</code> käytetään datasetin <code>label</code> sarakkeen tietoja ja syötedatoina (<em>input</em>) <code>x</code> kaikkia muita sarakkeita.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">dataset</span><span class="o">.</span><span class="n">label</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Datasettien jakamisen jälkeen valitaan luokitteluun sopiva logistinen regressiomalli (<em>logistic regression</em>) lineaaristen mallien perheestä ja koulutetaan eli sovitetaan (<em>fit</em>) se dataan. Sen jälkeen muodostetaan ennuste testisetin syötedatoista ja verrataan ennusteita todellisiin tietoihin sekaannusmatriisilla. Sarakkeen <code>label</code> arvot on hyvä vielä kerrata: nolla tarkoittaa oikeaa ostotapahtumaa, yksi taas petosta.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">utils</span> <span class="k">import</span> <span class="n">train_utils</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+<span class="n">train_utils</span><span class="o">.</span><span class="n">visualize_results_acc_cm</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tulokset määrissä:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>true_0</th>
+      <th>true_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>model_0</th>
+      <td>12900</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>model_1</th>
+      <td>0</td>
+      <td>174</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Tulokset prosenteissa:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>true_0</th>
+      <th>true_1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>model_0</th>
+      <td>98.669114</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>model_1</th>
+      <td>0.000000</td>
+      <td>1.330886</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Mallin tarkkuus (ON+OP): 100.000%
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kouluttamamme malli onnistui luokittelemaan ostotapahtumat niiden tekohetkellä sille syötetyn datasetin pohjalta täydellisesti. Huomionarvoista on kuitenkin, että tämä ei tarkoita sitä, että malli olisi täydellinen todellisessa käytössä - sitä pitäis kouluttaa uudelleen ja uudelleen aina uusien havaintojen myötä.</p>
 
 </div>
 </div>
