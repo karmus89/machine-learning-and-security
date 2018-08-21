@@ -12413,16 +12413,12 @@ div#notebook {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Optimization">Optimization<a class="anchor-link" href="#Optimization">&#182;</a></h3><p>Kahdella tähän asti esitellyllä komponentilla saisimme ajettua algoritmimme eli koulutettavan mallimme pisteeseen, jossa pääsisimme selville sen kyvystä suoriutua halutulla datasetillä "hyllystä otettuna". Jotta malli kykenisi tuottamaan mahdollisimman tarkkoja toivottuja tuloksia, on mallin parametreja säädettävä suhteessa sen tuottamaan virheeseen. Tätä kutsutaan koneoppimismenetelmien kohdalla optimoinniksi (<em>optimization</em>) ja optimointia varten on oma laaja kirjonsa erilaisia algoritmeja.</p>
 <p>Optimointialgoritmin tehtävänä on joko minimimoida tai maksimoida mallin kohdefunktion tuottama arvo. Optimoitavat arvot ovat mallin parametreja, joita muuttamalla tavoitellaan pienintä (tai suurinta) mahdollista kohdefunktion ulostuloa. Optimointialgoritmit voidaan jaotella karkeasti kahteen ryhmään:</p>
-<ol>
-<li><p><strong>Ensimmäisen asteen optimointialgoritmit:</strong></p>
-<p>Nämä menetelmät käyttävät kohdefunktion arvosta laskettua ensimmäistä derivaattaa (suunta), joka lasketaan kullekin parametrille - tätä kutsutaan myös kaltevuudeksi (<em>gradient</em>). Näin päästään käsiksi vapaasti ilmaistuna kunkin mallin parametrin vastuusta virheeseen. Paljon käytetyt jyrkimmän kaltevuuden menetelmät (<em>gradient descent methods</em>) ovat ensimmäisen asteen optimointialgoritmeja. Nämä menetelmät ovat laskennallisesti kepeitä, joskin ne voivat jumiutua kohdefunktioon nähden alueelle, josta kohdefunktiota voitaisiin vielä parantaa edelleen - tämä tunnetaan paikalliseen minimiin jumiutumisena (vrt. globaali eli todellinen minimi). Samoin ne voivat joutua tilaan, jossa minimoituminen hidastuu merkittävästi.</p>
-</li>
-</ol>
-<ol>
-<li><p><strong>Toisen asteen optimointialgoritmit:</strong></p>
-<p>Vain ensimmäisten derivaattojen sijasta toisen asteen optimointialgoritmit käyttävät myös kohdefunktion toisia derivaattoja (kiihtyvyys) suhteessa mallin parametreihin. Näiden menetelmien etuna on se, että ne ovat paljon vastustuskykyisempiä sekä lokaaleihin minimeihin jumiutumista ja minimoinnin hidastumista vastaan. Toisaalta nämä menetelmät ovat ensimmäisen asteen menetelmiin nähden paljon raskaampia laskennallisesti.</p>
-</li>
-</ol>
+<ul>
+<li><strong>Ensimmäisen asteen optimointialgoritmit:</strong> Nämä menetelmät käyttävät kohdefunktion arvosta laskettua ensimmäistä derivaattaa (suunta), joka lasketaan kullekin parametrille - tätä kutsutaan myös kaltevuudeksi (<em>gradient</em>). Näin päästään käsiksi vapaasti ilmaistuna kunkin mallin parametrin vastuusta virheeseen. Paljon käytetyt jyrkimmän kaltevuuden menetelmät (<em>gradient descent methods</em>) ovat ensimmäisen asteen optimointialgoritmeja. Nämä menetelmät ovat laskennallisesti kepeitä, joskin ne voivat jumiutua kohdefunktioon nähden alueelle, josta kohdefunktiota voitaisiin vielä parantaa edelleen - tämä tunnetaan paikalliseen minimiin jumiutumisena (vrt. globaali eli todellinen minimi). Samoin ne voivat joutua tilaan, jossa minimoituminen hidastuu merkittävästi.</li>
+</ul>
+<ul>
+<li><strong>Toisen asteen optimointialgoritmit:</strong> Vain ensimmäisten derivaattojen sijasta toisen asteen optimointialgoritmit käyttävät myös kohdefunktion toisia derivaattoja (kiihtyvyys) suhteessa mallin parametreihin. Näiden menetelmien etuna on se, että ne ovat paljon vastustuskykyisempiä sekä lokaaleihin minimeihin jumiutumista ja minimoinnin hidastumista vastaan. Toisaalta nämä menetelmät ovat ensimmäisen asteen menetelmiin nähden paljon raskaampia laskennallisesti. </li>
+</ul>
 <p>Näistä kahdesta ryhmästä ensimmäisen asteen optimointialgoritmit ovat yleisempiä niiden suhteellisen tehokkuuden vuoksi. Tähän ryhmään kuuluvat mm. seuraavat menetelmät: stokastinen jyrkimmän kaltevuuden menetelmä (<em>stochastic gradient descent, SGD</em>) momentilla ja ilman, mukautuva momentin arviointi (<em>adaptive moment estimation, Adam</em>), AdaGrad, AdaDelta ja RMSprop. Joka tapauksessa kuhunkin datasettiin sopivan optimointimenetelmän valinta on yrityksen ja erehdyksen kautta tapahtuva valintaprosessi. Siksi on hyvä valita edes kaksi algoritmia, joiden kesken suorittaa vertailua. Voi olla, että toinen menetelmistä onnistuu optimoimaan mallin parametreja huomattavasti paremmin suhteessa kohdefunktioon.</p>
 
 </div>
