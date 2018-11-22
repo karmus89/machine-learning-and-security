@@ -9,9 +9,9 @@ The simple answer: To help native Finnish speakers grasp the consepts of machine
 
 ## Notes by Chapter
 
- - [01 - Why Machine Learning and Security?](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/notebooks/html/01.%20Why%20Machine%20Learning%20and%20Security.html)
- - [02 - Classifying and Clustering](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/notebooks/html/02.%20Classifying%20and%20Clustering.html)
- - [03 - Anomaly Detection](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/notebooks/html/03.%20Anomaly%20Detection.html)
+ - [01 - Why Machine Learning and Security?](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/01.%20Why%20Machine%20Learning%20and%20Security.html)
+ - [02 - Classifying and Clustering](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/02.%20Classifying%20and%20Clustering.html)
+ - [03 - Anomaly Detection](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/03.%20Anomaly%20Detection.html)
  - ...
 
 ---
