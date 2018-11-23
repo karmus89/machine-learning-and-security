@@ -13,6 +13,7 @@ The simple answer: To help native Finnish speakers grasp the consepts of machine
  - [02 - Classifying and Clustering](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/02.%20Classifying%20and%20Clustering.html)
  - [03 - Anomaly Detection](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/03.%20Anomaly%20Detection.html)
  - [04 - Malware Analysis](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/04.%20Malware%20Analysis.html)
+ - [05 - Network Traffic Analysis](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/05%20-%20Network%20Traffic%20Analysis.html)
  - ...
 
 ---
