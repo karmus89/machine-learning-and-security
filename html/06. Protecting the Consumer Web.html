@@ -11781,7 +11781,7 @@ div#notebook {
 <script>
 $( document ).ready(function(){
 
-            var cfg = {"base_numbering": 1, "nav_menu": {}, "number_sections": false, "sideBar": true, "skip_h1_title": false, "title_cell": "Sis\u00e4llysluettelo", "title_sidebar": "Sis\u00e4llysluettelo", "toc_cell": true, "toc_position": {"height": "1158px", "left": "278px", "top": "111.133px", "width": "338px"}, "toc_section_display": true, "toc_window_display": true};
+            var cfg = {"base_numbering": 1, "nav_menu": {}, "number_sections": false, "sideBar": true, "skip_h1_title": false, "title_cell": "Sis\u00e4llysluettelo", "title_sidebar": "Sis\u00e4llysluettelo", "toc_cell": true, "toc_position": {"height": "1158px", "left": "278px", "top": "111.133px", "width": "236px"}, "toc_section_display": true, "toc_window_display": true};
 
             // fire the main function with these parameters
             require(['nbextensions/toc2/toc2'], function (toc2) {
@@ -11810,7 +11810,7 @@ $( document ).ready(function(){
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Sisällysluettelo<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Protecting-the-Consumer-Web" data-toc-modified-id="Protecting-the-Consumer-Web-1">Protecting the Consumer Web</a></span></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Protecting-the-Consumer-Web" data-toc-modified-id="Protecting-the-Consumer-Web-1">Protecting the Consumer Web</a></span><ul class="toc-item"><li><span><a href="#Monetizing-the-Consumer-Web" data-toc-modified-id="Monetizing-the-Consumer-Web-1.1">Monetizing the Consumer Web</a></span></li><li><span><a href="#Types-of-Abuse-and-the-Data-That-Can-Stop-Them" data-toc-modified-id="Types-of-Abuse-and-the-Data-That-Can-Stop-Them-1.2">Types of Abuse and the Data That Can Stop Them</a></span><ul class="toc-item"><li><span><a href="#Authentication-and-Account-Takeover" data-toc-modified-id="Authentication-and-Account-Takeover-1.2.1">Authentication and Account Takeover</a></span><ul class="toc-item"><li><span><a href="#Features-used-to-classify-login-attempts" data-toc-modified-id="Features-used-to-classify-login-attempts-1.2.1.1">Features used to classify login attempts</a></span></li><li><span><a href="#Building-your-classifier" data-toc-modified-id="Building-your-classifier-1.2.1.2">Building your classifier</a></span></li></ul></li><li><span><a href="#Account-Creation" data-toc-modified-id="Account-Creation-1.2.2">Account Creation</a></span></li></ul></li></ul></li></ul></div>
 </div>
 </div>
 </div>
@@ -11818,7 +11818,162 @@ $( document ).ready(function(){
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Protecting-the-Consumer-Web">Protecting the Consumer Web<a class="anchor-link" href="#Protecting-the-Consumer-Web">&#182;</a></h1>
+<h1 id="Protecting-the-Consumer-Web">Protecting the Consumer Web<a class="anchor-link" href="#Protecting-the-Consumer-Web">&#182;</a></h1><p>Järjestelmiin kohdistuvien hyökkäysten sijasta tässä luvussa keskitytään kuluttajille suunnattujen olemassaolevien web-sovellusten ja niiden toiminnallisuuksien hyväksikäyttöön. Tällä tarkoitetaan julkisesti verkossa olevien palvelujen käyttöä, erotuksena organisaatioiden sisäverkoissa olevista palveluista ja toiminnallisuuksista. Julkisessa verkossa on monia hyökkäyspintoja, kuten maksu- ja kirjautumisrajapinnat ja sisällöntuotantovälineet. Sosiaalisen median palvelut avaavat myös lisäväyliä hyväksikäytölle.</p>
+<p>Julkisten web-palvelujen etuna on niiden skaala, sillä suuren käyttäjämäärän palvelut saavat helposti kerättyä tietoa normaalista liikenteestä haitallisen tunnistamiseksi. Tämä luvun keskiössä on API-kutsuilla käytettäviin sovelluksiin kohdistuvan haitallisen vaikuttamisen tunnistaminen.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Monetizing-the-Consumer-Web">Monetizing the Consumer Web<a class="anchor-link" href="#Monetizing-the-Consumer-Web">&#182;</a></h2><p>Monin paikoin verkon palveluissa pelkkä luvaton pääsy tiliin takaa jonkinasteisen rahallisen hyväksikäytön mahdollisuuden (pankit, markkinapaikat, palvelut). Tästä syystä tilien suojaus on ensiarvoisen tärkeää. Myös väärennetyin käyttäjätiedoin (<em>fraud</em>) toimiminen mahdollistaa hyötymisen ei-aiotulla tavalla, kuten varastetuin luottokorttitiedoin. Väärennöksiä voi esiintyä myös mm. linkkien klikkeihin perustuvien mainostulojen tienaamisessa. Roskapostin tapaiset huijaukset ovat mahdollisia kaikissa sellaisissa palveluissa, joissa voidaan viestiä.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Types-of-Abuse-and-the-Data-That-Can-Stop-Them">Types of Abuse and the Data That Can Stop Them<a class="anchor-link" href="#Types-of-Abuse-and-the-Data-That-Can-Stop-Them">&#182;</a></h2><p>Seuraavaksi tarkastellaan joitain tapoja, joilla hyökkääjä voi pyrkiä hyötymään verkon kuluttajapalveluista. Tarkastelun kohteena ovat tarkemmin tilien varastamista, luomista, rahallista petosta ja bottitoimintaa. Jokaisen hyökkäysvektorin kohdalla käydään läpi tunnistamiseen tarvitta data ja sen keruu.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Authentication-and-Account-Takeover">Authentication and Account Takeover<a class="anchor-link" href="#Authentication-and-Account-Takeover">&#182;</a></h3><p>Palvelun yksilöinti mm. sisällön ja käyttöoikeuksien mukaan edellyttää käyttäjien tunnistamista, joka nykyisin on pääsääntöisesti salasanapohjaista. Salasanojen helppokäyttöisyyden ohella niillä on tiettyjä ominaisongelmia. Ne valitaan usein helposti muistettaviksi. Samoja salasanoja käytetään myös palvelusta toiseen. Salasanoja voidaan myös helposti kalastella huijaamalla ihminen syöttämään se valesivulle sekä ne voidaan myös selvittää esimerkiksi muistiinpanoista.</p>
+<p>Biometristen ja muuttumattomien keinojen ohella monivaiheinen tunnistus on tapa dynaamisesti reagoida epäilyttävään kirjautumisyritykseen. Tällöin käyttäjää vaaditaan vahvistamaan kirjautuminen jonkin lisäpalvelun, -toiminnon tai -laitteen avulla, minkä käyttäjällä tiedetään olevan. Tämä voi olla vahvistussähköpostiin, tekstiviestiin tai johonkin laitteeseen toimitetun vahvistuskoodin pyytämistä. Nämäkään eivät ole täysin ongelmattomia tapoja, sillä jokainen näistä tavoista voidaan jollain tapaa joko uudelleenohjata tai pyydetyt vain oletetusti käyttäjän tietämät tiedot selvittää sosiaalisista medioista. Kuten arvata saattaa, myös tilastotieteeseen ja koneoppimiseen pohjaavia menetelmiä voidaan tässä kohdin hyödyntää.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Features-used-to-classify-login-attempts">Features used to classify login attempts<a class="anchor-link" href="#Features-used-to-classify-login-attempts">&#182;</a></h4><p>Mikäli hyökkääjät tahdotaan pitää pois järjestelmistä luvattomien kirjautumisten estämisellä, on kirjautumiseen rakennettava toimintaa tutkivia ja pääsyä rajoittavia toimintoja. Kirjautumisen yhteydessä kerättävät, hyökkäystä ilmaisevat signaalit, voidaan ryhmitellä seuraavasti:</p>
+<ul>
+<li>Salasanan arvaus raa'alla voimalla (<em>brute force</em>)<ul>
+<li>Kirjautumisyritysten nopeus</li>
+<li>Kokeiltujen salasanojen suosittuus</li>
+<li>Kokeiltujen salasanojen samankaltaisuus</li>
+</ul>
+</li>
+<li>Tavanomaisesta käyttäytymisestä poikkeava toiminta<ul>
+<li>IP-pohjainen kirjautumissijainnin tarkastelu</li>
+<li>Poikkeavan selaimen, käyttöjärjestelmän tai sovelluksen käyttö</li>
+<li>Epätavallinen kirjautumisaika</li>
+<li>Poikkeava kirjautumistiheys</li>
+<li>Poikkeava verkkopyyntöjen sekvenssi kirjautumisen yhteydessä</li>
+</ul>
+</li>
+<li>Laajan mittakaavan automatisoitu kirjautuminen<ul>
+<li>IP-kohtaiset kirjautumisyritysmäärät</li>
+<li>Poikkeava määrä epäonnistuneita kirjautumisia palvelussa</li>
+<li>Pyyntöjen lähde epäilyttävä</li>
+<li>Koneellista toimijaa ilmaisevien selain-telemetriatietojen keruu</li>
+</ul>
+</li>
+</ul>
+<p>Vaikka signaalit on helppo listata, niiden keruu ja ylläpitäminen ei ole helppo tehtävä. Poikkeavan toiminnan tunnistaminen esimerkiksi edellyttää mallia, joka on koulutettu tunnistamaan käyttäjän normaali toiminta. Joissain tapauksissa estäminen on kuitenkin helppoa, kuten raa'an voiman salasanojen arvaushyökkäysten kohdalla kirjausyritysten rajoittaminen. Salasanojen kohdalla ongelmaksi voi muodostua niiden salaus.</p>
+<p>Mikäli ajatusta jatketaan siitä, että hyökkääjällä on toimivat käyttäjätiedot, kuinka silloin tulisi sitten toimia? Käyttäjätilin vaarantumisen tunnistaminen on lähes taidetta. Vaikka jotkut käyttäjät ilmoittaisivatkin tilinsä vääriin käsiin joutumisesta, toiset käyttäjät vain jättävät palvelun käytön ilmaantuneen lisävaivan (<em>friction</em>) vuoksi. Kuinka siis luotettavasti tunnistaa väärinkäytökset? Edellä esiteltyjen signaalien käyttö on hyvä lähtökohta. Tiettyjen raja-arvojen ylittyessä voitaisiin yksivaiheisen tunnistuksen lisäksi vaatia toisen vaiheen käyttöä.</p>
+<p>Todennäköisyyksien puolesta mielekäs kysymys on, että mikä on tilin oikean omistajan kirjautumistodennäköisyys. Yksinkertainen esimerkki, jolla asiaa voidaan lähestyä, on ehdollisen todennäköisyyden kautta. Esimerkiksi omistajan kirjautumisen todennäköisyyttä voidaan lähestyä keksityn ehdollisen todennäköisyyden</p>
+<p>$$ P(\text{ip}=x\mid\text{user}=u) = \frac{\text{logins from }x \text{ with } u}{\text{logins with }u} $$</p>
+<p>kautta. Käyttämällä seuraavaa yhden käyttäjän kirjautumistaulukkoa datana, ehdolliset todennäköisyydet ovat seuraavat:</p>
+<table>
+<thead><tr>
+<th style="text-align:center">Pvm</th>
+<th style="text-align:center">IP</th>
+<th style="text-align:center">Maa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1.6.</td>
+<td style="text-align:center">1.2.3.4</td>
+<td style="text-align:center">FI</td>
+</tr>
+<tr>
+<td style="text-align:center">2.6.</td>
+<td style="text-align:center">1.2.3.4</td>
+<td style="text-align:center">FI</td>
+</tr>
+<tr>
+<td style="text-align:center">3.6.</td>
+<td style="text-align:center">5.6.7.8</td>
+<td style="text-align:center">FI</td>
+</tr>
+<tr>
+<td style="text-align:center">4.6.</td>
+<td style="text-align:center">1.2.3.4</td>
+<td style="text-align:center">FI</td>
+</tr>
+<tr>
+<td style="text-align:center">5.6.</td>
+<td style="text-align:center">5.6.7.8</td>
+<td style="text-align:center">FI</td>
+</tr>
+<tr>
+<td style="text-align:center">6.6.</td>
+<td style="text-align:center">1.2.3.4</td>
+<td style="text-align:center">FI</td>
+</tr>
+<tr>
+<td style="text-align:center">7.6.</td>
+<td style="text-align:center">1.2.3.45</td>
+<td style="text-align:center">FI</td>
+</tr>
+<tr>
+<td style="text-align:center">8.6.</td>
+<td style="text-align:center">98.76.54.32</td>
+<td style="text-align:center">SE</td>
+</tr>
+</tbody>
+</table>
+<p>$$P(\text{ip}=1.2.3.*\mid\text{user}=u)=62.5\%$$ 
+$$P(\text{ip}=5.6.7.8\mid\text{user}=u)=25\%$$ 
+$$P(\text{ip}=98.76.54.32\mid\text{user}=u)=12.5\%$$</p>
+<p>Käytännössä kuitenkin esimerkiksi dynaamisen IP:n vuoksi käyttäjien tarkka IP-osoite voi vaihdella, mikä puolestaan voi aiheuttaa turhaa vaivaa ja täten käyttäjäkatoa palvelulle. Siksi raa'an todennäköisyyden sijasta voisi olla viisasta lisätä todennäköisyyteen jonkinasteista pehmennystä, jolla etenkin harvaan kirjautuneiden käyttäjien kirjautumiskertoja saadaan painotettua ehdollisen todennäköisyyden laskennassa. Tällöin ehdollinen todennäköisyys saa muodon</p>
+<p>$$ P(\text{ip}=x\mid\text{user}=u) = \frac{\text{logins from }x \text{ with } u + \alpha}{\text{logins with }u + \beta}, $$</p>
+<p>jossa $\alpha$ ja $\beta$ ovat esimerkiksi IP:n pohjalta määräytyviä arvoja. Toisin sanoen jos on oletettavissa, että 20% kirjautumisista tulee käsiteltävästä IP-osoitteesta, voidaan kyseisen IP:n kohdalla käyttää arvoja $\alpha=0.2$ ja $\beta=1$. Näin ehdolliset todennäköisyydet saavat seuraavat arvot:</p>
+<p>$$P(\text{ip}=1.2.3.*\mid\text{user}=u)=68.9\%$$ 
+$$P(\text{ip}=5.6.7.8\mid\text{user}=u)=24.4\%$$ 
+$$P(\text{ip}=98.76.54.32\mid\text{user}=u)=13.3\%$$</p>
+<p>Säätämällä arvoja saadaan merkitsevyyttä viilattua vastaamaan odotuksia ja todellisuutta. Samankaltaisella lähestymisellä voidaan kohdella kutakin edellä listatuista käyttäjätileihin kohdistuvasta hyökkäyksestä kertovista signaaleista.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Building-your-classifier">Building your classifier<a class="anchor-link" href="#Building-your-classifier">&#182;</a></h4><p>Ilman oikeita vastauksia edellä mainittujen piirteiden ja todennäköisyyksien hyödyntäminen luokittelussa haastavaa. Naaivi lähestymistapa olisi käsitellä kutakin piirrettä ja siitä muodostettua todennäköisyyttä ja muodostaa näin kokonaistodennäköisyys kullekin kirjautumiselle. Toisaalta tässä yhteydessä voitaisiin käyttää myös jotain ryhmittelymenetelmää, kuten yksiluokkaista tukivektorikonetta tai eristysmetsää. Oikeiden vastausten löytyessä ongelma on jo melko triviaali.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Account-Creation">Account Creation<a class="anchor-link" href="#Account-Creation">&#182;</a></h3><p>Kaikkeen haitalliseen toimintaan ei tarvita olemassaolevan tilin kaappausta, vaan uuden tilin luominenkin riittää joissain tapauksissa. Esimerkiksi huijausviestien lähettäminen voi onnistua täysin uudellakin perustilillä. Mikäli tilejä voidaan luoda rajatta, voidaan koko järjestelmä ikäänkuin kaapata näin. Pisteyttämällä tilin luontiprosessi voidaan valetilien luonteja vähentää ja estää jo alkumetreiltä. Samoin pisteyttämällä jo luodut tilit voidaan haitalliseksi epäillyt tilit estää tai jopa poistaa. Tällöin soveliaita piirteitä voisi olla esimeriksi IP-kohtaisesti luotujen tilien määrä jossain ajanjaksossa. Tässäkin tapauksessa rajana on ensisijaisesti aika, jolloin ajanjakson sisällä haitallinen toiminta on täysin mahdollista, mikäli tilien luontimäärää ei ole itsessään rajoitettu. Ylipäätään tässä yhteydessä sovellettavat piirteet jaetaan kahteen pääjoukkoon: nopeus- ja mainepiirteisiin.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Velocity-features">Velocity features<a class="anchor-link" href="#Velocity-features">&#182;</a></h4><p>Pelkkä IP-osoitteiden estäminen havaittaessa ei ole riittävä tapa estää haitallista toimintaa, sillä uusia reittejä ja täten IP-osoitteita on melko helppo löytää. Siksi karkean ja tehottoman estämisen sijasta on hyödyllisempää on käyttää robusteja piirteitä. Eräs tällainen on laskurin käyttö, joka tarkkailee esimerkiksi kunkin IP-osoitteen tunnuslukuja tuntikohtaisesti pitäen tiettyä määrää historiadataa myös aina saatavilla. Koska liian yksityiskohtaisen kirjanpidon kolikon kääntöpuolella on nopeasti räjähtävät tallennustilavaatimukset, voidaan myös tilien luonteja laskea pitäen samalla kirjaa käyttäjien IP-osoitteista, käyttöjärjestelmistä ja muusta saatavilla olevasta datasta.</p>
+<p>Kun jokaisesta näistä piirteistä ylläpidetään riittävän historian säilyttävää laskuria yleisemmällä tasolla, saadaan sekä käsitys järjestelmän normaalista käyttöasteesta että poikkeavista toiminnoista. Joissain tapauksissa yksityiskohtaisuutta on hyvä hakea. Esimerkiksi käyttöjärjestelmien kohdalla jakaumien erottelu käyttöjärjestelmäkohtaisesti voi olla kannattavaa, sillä yksittäiset jonkin tietyn käyttöjärjestelmän piikit voivat kertoa haitallisesta toiminnasta.</p>
+
 </div>
 </div>
 </div>
