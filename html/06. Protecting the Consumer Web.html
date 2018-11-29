@@ -11810,7 +11810,7 @@ $( document ).ready(function(){
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Sisällysluettelo<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Protecting-the-Consumer-Web" data-toc-modified-id="Protecting-the-Consumer-Web-1">Protecting the Consumer Web</a></span><ul class="toc-item"><li><span><a href="#Monetizing-the-Consumer-Web" data-toc-modified-id="Monetizing-the-Consumer-Web-1.1">Monetizing the Consumer Web</a></span></li><li><span><a href="#Types-of-Abuse-and-the-Data-That-Can-Stop-Them" data-toc-modified-id="Types-of-Abuse-and-the-Data-That-Can-Stop-Them-1.2">Types of Abuse and the Data That Can Stop Them</a></span><ul class="toc-item"><li><span><a href="#Authentication-and-Account-Takeover" data-toc-modified-id="Authentication-and-Account-Takeover-1.2.1">Authentication and Account Takeover</a></span><ul class="toc-item"><li><span><a href="#Features-used-to-classify-login-attempts" data-toc-modified-id="Features-used-to-classify-login-attempts-1.2.1.1">Features used to classify login attempts</a></span></li><li><span><a href="#Building-your-classifier" data-toc-modified-id="Building-your-classifier-1.2.1.2">Building your classifier</a></span></li></ul></li><li><span><a href="#Account-Creation" data-toc-modified-id="Account-Creation-1.2.2">Account Creation</a></span></li></ul></li></ul></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Protecting-the-Consumer-Web" data-toc-modified-id="Protecting-the-Consumer-Web-1">Protecting the Consumer Web</a></span><ul class="toc-item"><li><span><a href="#Monetizing-the-Consumer-Web" data-toc-modified-id="Monetizing-the-Consumer-Web-1.1">Monetizing the Consumer Web</a></span></li><li><span><a href="#Types-of-Abuse-and-the-Data-That-Can-Stop-Them" data-toc-modified-id="Types-of-Abuse-and-the-Data-That-Can-Stop-Them-1.2">Types of Abuse and the Data That Can Stop Them</a></span><ul class="toc-item"><li><span><a href="#Authentication-and-Account-Takeover" data-toc-modified-id="Authentication-and-Account-Takeover-1.2.1">Authentication and Account Takeover</a></span><ul class="toc-item"><li><span><a href="#Features-used-to-classify-login-attempts" data-toc-modified-id="Features-used-to-classify-login-attempts-1.2.1.1">Features used to classify login attempts</a></span></li><li><span><a href="#Building-your-classifier" data-toc-modified-id="Building-your-classifier-1.2.1.2">Building your classifier</a></span></li></ul></li><li><span><a href="#Account-Creation" data-toc-modified-id="Account-Creation-1.2.2">Account Creation</a></span><ul class="toc-item"><li><span><a href="#Velocity-features" data-toc-modified-id="Velocity-features-1.2.2.1">Velocity features</a></span></li><li><span><a href="#Reputation-scores" data-toc-modified-id="Reputation-scores-1.2.2.2">Reputation scores</a></span></li></ul></li><li><span><a href="#Financial-Fraud" data-toc-modified-id="Financial-Fraud-1.2.3">Financial Fraud</a></span></li><li><span><a href="#Bot-Activity" data-toc-modified-id="Bot-Activity-1.2.4">Bot Activity</a></span><ul class="toc-item"><li><span><a href="#Labeling-and-metrics" data-toc-modified-id="Labeling-and-metrics-1.2.4.1">Labeling and metrics</a></span></li></ul></li></ul></li><li><span><a href="#Supervised-Learning-for-Abuse-Problems" data-toc-modified-id="Supervised-Learning-for-Abuse-Problems-1.3">Supervised Learning for Abuse Problems</a></span><ul class="toc-item"><li><span><a href="#Labeling-Data" data-toc-modified-id="Labeling-Data-1.3.1">Labeling Data</a></span></li><li><span><a href="#Cold-Start-Versus-Warm-Start" data-toc-modified-id="Cold-Start-Versus-Warm-Start-1.3.2">Cold Start Versus Warm Start</a></span></li><li><span><a href="#False-Positives-and-False-Negatives" data-toc-modified-id="False-Positives-and-False-Negatives-1.3.3">False Positives and False Negatives</a></span></li><li><span><a href="#Multiple-Responses" data-toc-modified-id="Multiple-Responses-1.3.4">Multiple Responses</a></span></li><li><span><a href="#Large-Attacks" data-toc-modified-id="Large-Attacks-1.3.5">Large Attacks</a></span></li></ul></li><li><span><a href="#Clustering-Abuse" data-toc-modified-id="Clustering-Abuse-1.4">Clustering Abuse</a></span><ul class="toc-item"><li><span><a href="#Example:-Clustering-Spam-Domains" data-toc-modified-id="Example:-Clustering-Spam-Domains-1.4.1">Example: Clustering Spam Domains</a></span></li><li><span><a href="#Generating-Clusters" data-toc-modified-id="Generating-Clusters-1.4.2">Generating Clusters</a></span><ul class="toc-item"><li><span><a href="#Grouping" data-toc-modified-id="Grouping-1.4.2.1">Grouping</a></span></li><li><span><a href="#Locality-sensitive-hashing" data-toc-modified-id="Locality-sensitive-hashing-1.4.2.2">Locality-sensitive hashing</a></span></li></ul></li></ul></li></ul></li></ul></div>
 </div>
 </div>
 </div>
@@ -11972,7 +11972,182 @@ $$P(\text{ip}=98.76.54.32\mid\text{user}=u)=13.3\%$$</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Velocity-features">Velocity features<a class="anchor-link" href="#Velocity-features">&#182;</a></h4><p>Pelkkä IP-osoitteiden estäminen havaittaessa ei ole riittävä tapa estää haitallista toimintaa, sillä uusia reittejä ja täten IP-osoitteita on melko helppo löytää. Siksi karkean ja tehottoman estämisen sijasta on hyödyllisempää on käyttää robusteja piirteitä. Eräs tällainen on laskurin käyttö, joka tarkkailee esimerkiksi kunkin IP-osoitteen tunnuslukuja tuntikohtaisesti pitäen tiettyä määrää historiadataa myös aina saatavilla. Koska liian yksityiskohtaisen kirjanpidon kolikon kääntöpuolella on nopeasti räjähtävät tallennustilavaatimukset, voidaan myös tilien luonteja laskea pitäen samalla kirjaa käyttäjien IP-osoitteista, käyttöjärjestelmistä ja muusta saatavilla olevasta datasta.</p>
-<p>Kun jokaisesta näistä piirteistä ylläpidetään riittävän historian säilyttävää laskuria yleisemmällä tasolla, saadaan sekä käsitys järjestelmän normaalista käyttöasteesta että poikkeavista toiminnoista. Joissain tapauksissa yksityiskohtaisuutta on hyvä hakea. Esimerkiksi käyttöjärjestelmien kohdalla jakaumien erottelu käyttöjärjestelmäkohtaisesti voi olla kannattavaa, sillä yksittäiset jonkin tietyn käyttöjärjestelmän piikit voivat kertoa haitallisesta toiminnasta.</p>
+<p>Kun jokaisesta näistä piirteistä ylläpidetään riittävän historian säilyttävää laskuria yleisemmällä tasolla, saadaan sekä käsitys järjestelmän normaalista käyttöasteesta että poikkeavista toiminnoista. Joissain tapauksissa yksityiskohtaisuutta on hyvä hakea. Esimerkiksi käyttöjärjestelmien kohdalla jakaumien erottelu käyttöjärjestelmäkohtaisesti voi olla kannattavaa, sillä yksittäiset jonkin tietyn käyttöjärjestelmän piikit voivat kertoa haitallisesta toiminnasta. Ylipäätään <em>suhteellisten</em> piikkien tarkastelulla saadaan ylläpidettyä hyvää tilannekuvaa, joskin piikkien havaitseminen edellyttää olemassaolevaa dataa.</p>
+<p>Mielenkiintoisia suhteellisia piirteitä voivat olla esimerkiksi:</p>
+<ul>
+<li>Onnistuneiden kirjautumisten suhde epäonnistuneisiin</li>
+<li>Suorien API-kutsujen suhde sivuston kautta tuleviin kutsuihin</li>
+<li>Mobiilipyyntöjen suhde työpöytäpyyntöihin</li>
+<li>Virhevastausten (4xx) suhde onnistuneisiin (2xx)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Reputation-scores">Reputation scores<a class="anchor-link" href="#Reputation-scores">&#182;</a></h4><p>Siinä missä nopeuspiirteet toimivat suuren mittaluokan toiminnan havaitsemisessa, mutta yksityiskohtaisempaan tarkasteluun ne eivät enää sovellu. Tällöin kysymys yleisestä tilannekuvasta vaihtuu kysymykseen yksittäisten havaintojen luotettavuudesta, mitä voidaan mitata joko omiin tai ulkoisiin havaintoihin perustuvalla maineella. Jos IP-osoitteesta on aiemmin todettu haitallista vaikuttamista, voidaan sitä odottaa myös jatkossakin. IP-osoitten mainetta kuvaavia piirteitä ovat esimerkiksi seuraavat:</p>
+<ul>
+<li>Milloin IP-osoite on viimeksi nähty?</li>
+<li>Montako aitoa tiliä IP-osoitteella on?</li>
+<li>Paljonko IP-osoite tuottaa?</li>
+<li>Kuinka johdonmukaista osoitteesta tuleva liikenne on?</li>
+<li>Mikä on osoitteen kirjoitusten ja lukujen suhde (roskaposti)?</li>
+<li>Kuinka edustettu osoite on kaikissa kyselyissä?</li>
+</ul>
+<p>Omien kerättävien tietojen lisäksi käytettävissä on myös muiden ylläpitämiä tietokantoja, joita voi hyödyntää. Näitä kantoja löytyy esimerkiksi ylläpitopalveluista, IP-osoitteista, käyttäjä-agenteista (<em>user-agent</em>). Näiden kaikkien piirteiden yhdistämisessä mielenkiintoinen kysymys voi olla esimerkiksi se, että kuinka todennäköisesti IP-osoitteesta aiheutuu haittaa tulevaisuudessa. Yleisellä tasolla ongelma voidaan muotoilla uudelleen siten, että perustuen historiadataan, kuinka todennäköisesti IP-osoitteesta luodaan valetili lähitulevaisuudessa käyttäen lähtötietoina edellä määriteltyjä piirteitä lukuina ja suhteina. Piirteitä voidaan muodostaa myös muistakin asioista, kuin IP-osoitteesta.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Financial-Fraud">Financial Fraud<a class="anchor-link" href="#Financial-Fraud">&#182;</a></h3><p>Mikäli tuote voidaan saada haltuun ilmaiseksi, esimerkiksi käyttämällä varastettuja luottokorttitietoja, sen jälleenmyynnillä alkuperäistä halvemmalla voidaan tehdä merkittävääkin tuottoa. Suurin osa rahallisista huijauksista toteutetaankin varastetuilla luottokorteilla ja ongelma on internetiäkin vanhempi. Maksuliikenne on monivaiheinen prosessi, jossa jokaisessa sen vaiheessa on kyettävä turvaamaan rahaliikenteen ja maksutietojen salattuus. Samoin joka vaiheessa on myös oltava kyky tunnistaa petokset. Luottokorttien lisäksi myös vastaavat digitaaliset palvelut, kuten PayPal tai Apple Pay, ovat tälle alttiita.</p>
+<p>Seuraavat piirteet ovat kirjan mukaisesti petoksen tunnistamiselle hyödyllisiä:</p>
+<ul>
+<li>Kuinka suuresti yksittäisen oston rahasumma poikkeaa asiakkaan tavanomaisista ostoksista?</li>
+<li>Ostotiheys</li>
+<li>Ostettujen tuotteiden kategorinen tavanomaisuus kyseisellä asiakkaalla</li>
+<li>Onko kyseessä vanha asiakas vai ensiostaja?</li>
+<li>Onko maksutapa asiakkaal tyypillinen?</li>
+<li>Kuinka tuore uusi maksutapa asiakkaalla on?</li>
+</ul>
+<p>Näiden lisäksi voidaan pitää kirjaa siitä, mistä päin maailmaa asiakkaan ostotapahtumat normaalisti tulevat ja verrata uusia ostosijainteja näihin. Poikkeavat toimitusosoitteet, käyttäjän sijaintiin nähden epätavalliset rahoituslaitosten sijainnit, tilin maine ja maksutapojen käyttöyritysten määrät ovat myös hyödyllisiä petoksen tunnistamisen piirteitä. Tällaisesta datasta saadaan oikeita vastauksia aina viiveellä, kun asiakkaat huomaavaat tapahtuneen ja pyrkivät mitätöimään petoksella tehtyjä ostoksia.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Bot-Activity">Bot Activity<a class="anchor-link" href="#Bot-Activity">&#182;</a></h3><p>Sellaisten käyttäjätilien kaappaus, jotka antavat hyökkääjälle kelvollisen tuoton, on usein vaivaa vaativan ihmistyön takana. Usein laajemman käyttäjämassan hyväksikäyttö edellyttääkin automaatiota, jotta hyökkääjän työ tuottaa enemmän kuin se vie. Siksi automatisoidun eli bottipohjaisen toiminnan havaitseminen on tärkeää. Automaation keinoilla voidaan pyrkiä toimimaan ainakin seuraavilla alueilla:</p>
+<ul>
+<li>Valetilien luonti</li>
+<li>Vuodettujen käyttätietojen kokeilu vasten palvelun tunnistuspalvelua</li>
+<li>Sivuston tonkiminen haavoittuvuuksien tai liikesalaisuuksien vuoksi</li>
+<li>Klikkimääriin liittyvä petos mainontatuloissa</li>
+<li>Vertailusijapetos tykkäysten, arvostelujen tai kommenttien kautta</li>
+<li>Verkkopelaaminen</li>
+</ul>
+<p>Rahapetosten ohella myös tällä alueella toimitaan aktiivisesti tunnistamistarkkuuden ja -laajuuden parantamiseksi. Automatisoidun toiminnan havaitsemisen ensiaskeleita on käyttäjäkohtaisen toiminnan keruu, sillä tunnistamisen perusajatuksena on merkittävä eroavuus botti- ja ihmistoiminnan välillä. Datan keruun jälkeen siitä voidaan muodostaa vaikkapa seuraavia piirteitä:</p>
+<ul>
+<li>Pyyntöjen tiheys</li>
+<li>Pyyntöjen säännöllisyys</li>
+<li>Pyyntöjen kohteiden hajonta</li>
+<li>Toistuvat kuviot pyynnöissä</li>
+<li>Epätavalliset siirtymät</li>
+<li>Header-tietojen monimuotoisuus</li>
+<li>Istuntokohtaiset erot</li>
+<li>Hajonta pyyntöjen vastauskoodeissa</li>
+</ul>
+<p>Aina dataa ei voida kerätä käyttäjäkohtaisesti. Tällöin on keskityttävä kunkin sivustoa käyttävän toimijan tarkasteluun, milloin keskitytään pyyntökohtaiseen tunnistamiseen. Vaikkakin menetelmiä tähänkin löytyy, lisäävät ne tavallisesti oikeiden käyttäjien palvelun käyttötaakkaa ylimääräisin toimenpitein tai vaadituin oikeuksin.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Labeling-and-metrics">Labeling and metrics<a class="anchor-link" href="#Labeling-and-metrics">&#182;</a></h4><p>Bottien tekemien pyyntöjen luotettava nimiköiminen (<em>labeling</em>) on haastavaa, sillä yksittäisten pyyntöjen luokittelu ei ole helppoa ihmisellekään. Ilmeisintä on, mikäli sivustoon yhteyttävä ottava käyttäjä ilmaisee header-tiedossaan olevan botti. Muissa tapauksissa kyse on enemmän tai vähemmän tapauskohtaisista tekijöistä. Automatisoidut palvelussa tehdyt kirjoitusoperaatiot voivat ilmetä oikeiden käyttäjän roskapostivalituksina, kun taas lukuoperaatiot näkyvät käyttötilastoissa. Haittaliikennettä ei yleensäkään tulisi kuitenkaan mitata niillä suureilla, joilla sitä pyritään estämään - näin toimiessa haitallinen toiminta pakotetaan kehittymään ja muuntumaan vaikeammin havaittavaksi.</p>
+<p>Aina bottiliikenteestä ei ole muuta haittaa, kuin käyttäjätilastojen likaus. Mikäli kiinnostavaa on palvelun todellinen tavoittavuus, on bottiliikenteen suodatus tarpeellista. Esitellyt menetelmät toimivat myös näissä tapauksissa.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Supervised-Learning-for-Abuse-Problems">Supervised Learning for Abuse Problems<a class="anchor-link" href="#Supervised-Learning-for-Abuse-Problems">&#182;</a></h2><p>Kun data on riittävään tasoon asti piirteistetty ja soveliaasti myös nimiöity, voidaan edetä luokittimen rakentamiseen. Eteneminen ei kuitenkaan ole niin yksinkertainen, että datan käsittelyn ja piirteistämisen jälkeen se vain jaetaan koulutukselle soveliaisiin osiin ja syötetään sopivaan ohjatun oppimisen malliin. Vaikka seuraavaksi keskitytäänkin tilien luokittelijaan, pätevät käsitellyt asiat luokitteluun myös laajemmin.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Labeling-Data">Labeling Data<a class="anchor-link" href="#Labeling-Data">&#182;</a></h3><p>Oikeassa elämässä nimiöity data on harvinaista ja nimiöinti on tehtävä itse. Toisaalta, jos dataakin on vain kourallinen, ei suuren skaalan koneoppimisesta ole vielä soveltuvaksi käsillä olevaan ongelmaan. Todennäköistä on, että jokseenkin käytetyssä palvelussa on jo ehtinyt tulla vastaan käyttäjien rankaisemista, ilmiselvien roskapostibottitilien estämistä ja poistoja. Tätä kaikkea voi käyttää hyvinkin nimiöinnin lähtökohtana.</p>
+<p>Pelkästään näistä havainnoista oppiminen voi olla ongelmallista, minkä vuoksi näytteistyksellä saadaan lisätukea nimiöintiin. Ylinäytteistämällä käsin nimiöityjä näytteitä sekä mallin ennustamia varmistetusti haitalliseksi luokiteltuja haitattomia havaintoja ja vastapainoisesti alinäytteistämällä edellisten iteraatioiden haitallisia havaintoja voidaan malli saada iteratiivisesti yleistymään ennalta sille tuntemattomiinkin havaintoihin - mikä itsessään on koneoppimismallintamisen tavoite.</p>
+<p>Samoin epätarkan datan kanssa ei tule liian tarkasti tuijottaa mallin tarkkuustuloksia, etenkään offline-koulutuksessa staattisella datajoukolla. Tärkeintä on, että oikeassa toimintaympäristössä mallin tarkkuus on vaivan arvoinen.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Cold-Start-Versus-Warm-Start">Cold Start Versus Warm Start<a class="anchor-link" href="#Cold-Start-Versus-Warm-Start">&#182;</a></h3><p>Mikäli mallin koulutus aloitetaan nolla-pisteestä siten, että tunnistamisen opettelu aloitetaan alusta, on kyseessä mallin kylmäkäynnistys. Toisaalta, mikäli kyseessä on esimerkiks olemassaolevan mallin jatkoversion kehittäminen, on kyseessä lämminkäynnistys. Kylmäkäynnistyksen kohdalla eteneminen on suoraviivaista, sillä malli oppii sitä mukaa, kun sille syötetään havaintoja. Lämminkäynnistyksessä on kiinnitettävä huomiota siihen, ettei uutta mallia kouluteta datalla, joka on esimerkiksi olemassaolevan mallin jo valmiiksi pureskelemaa. Mikäli lämminkäynnistyksen tilanne on</p>
+
+<pre><code>[data] -&gt; [malli v1] -&gt; [malli v2],
+
+</code></pre>
+<p>jää toiselta versiolta oppimatta ensimmäisen version datasta oppimat piirteet. Koulutustilanteen tulisikin olla esimerkiksi versioiden vertailussa</p>
+
+<pre><code>       /-&gt; [malli v1]
+[data]&lt;
+       \-&gt; [malli v2].</code></pre>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="False-Positives-and-False-Negatives">False Positives and False Negatives<a class="anchor-link" href="#False-Positives-and-False-Negatives">&#182;</a></h3><p>Teoriassa väärin haitattomiksi luokitellut (väärä negatiivinen) on helppo tunnistaa, kun haitattomaksi luultu tili osoittautuukin haitalliseksi. Käytännössä tämä kuitenkin edellyttää, että haitallinen toiminta myös <em>havaitaan</em> jonkin toisen mallin tai ilmoituksen kautta. Samoin väärin haitalliseksi luokitellut havainnot ovat hankalia käytännössä - epäilyn vuoksi käyttö estettiin, eikä lisätietoa koskaan voitu enää kerätä. Tällöin takaisinkytkentää ei juuri synny ja siksi olisikin hyvä, että edes pieni osa haitallisiksi luokitelluista tileistä sallittaisiin kuitenkin läpi erityistarkkailussa. Tämä taas puolestaan voi kuitenkin vaikuttaa siihen, että haitallinen vaikutus vähenee skaalatuvuuden puutteen vuoksi, mikä puolestaan vaikuttaa datasta tehtäviin johtopäätöksiin (miksi haitallista toimintaa on tai ei ole?).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Multiple-Responses">Multiple Responses<a class="anchor-link" href="#Multiple-Responses">&#182;</a></h3><p>Usein käyttäjien tarkkailussa on monitasoisuutta. Selkeästi haitallisiksi luokitellut estetään, haitattomat päästetään ja väliin jäävät saavat esim CAPTCHA-testin ratkaistavakseen. Nämä vaihtelevat tilanteet on myös otettava soveliaasti painotettuina huomioon lopullisessa luokittelupisteytyksessä.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Large-Attacks">Large Attacks<a class="anchor-link" href="#Large-Attacks">&#182;</a></h3><p>Automatisoiduissa hyökkäyksissä haitallisen vaikuttamisen suhteelliset määrät voivat olla huomattavia, ja yksittäinenkin hyökkääjä voi generoida mittavan määrän liikennettä. Tällöin voi olla, että datajoukolla koulutettu malli sovittuukin lopulta vain yhden yksinkertaisempaa hyökkäystä käyttävän hyökkääjän toimintatapaan. Se toisin sanoen ylisovittuu eniten edustettuun mutta yksinkertaiseen hyökkäykseen.</p>
+<p>Tällöin suuria yksittäisiä hyökkäyksiä voidaan alinäytteistää, joskin ongelmaksi jää yksittäisten hyökkääjien identifioiminen laajasta datamassasta. Tätä käsitellään seuraavassa osiossa.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Clustering-Abuse">Clustering Abuse<a class="anchor-link" href="#Clustering-Abuse">&#182;</a></h2><p>Yhden käyttäjätunnuksen kaappaus vaikuttaa varsinaiseen järjestelmään vielä melko vähän. Vaikuttavuuden takaamiseksi tunnuksia on siksi tehtävä useita, mikä pätee toisaalta myös esimerkiksi roskaposteihinkin ja petoksiin ylipäätään. Petollinen toiminta ilmeneekin siksi useimmiten käyttäjätilien koordinoituna toimintana siten, että jokin toiminnasta eristettävä piirre on samankaltainen läpi tunnusten ja niiden käyttäytymisen. Tällöin ryhmittely muodostuu mielekkääksi tavaksi lähestyä ongelman ratkaisua.</p>
+<p>Ryhmittely etenee pääpiirteittäin seuraavasti:</p>
+<ul>
+<li>Ryhmittele käyttäjät tai käyttäjätoiminnot</li>
+<li>Arvioi kukin ryhmä haitallisuuden näkökulmasta</li>
+<li>Erottele haitallisten ryhmien sisältä haitattomat havainnot</li>
+</ul>
+<p>Ryhmittelyssä on myös kaksi sovelluskohteesta riippuvaa huomioitavaa tekijää. Ensimmäinen on merkitsevän klusterin koon alaraja, eli milloin havaintojen joukkoa voidaan käsitellä ryhmänä. Toinen liittyy ryhmien haitallisuuden määrittämiseen, jolloin varmistamisen kohteena on sekä ryhmän homogeenisyys että kokonaisuus.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Example:-Clustering-Spam-Domains">Example: Clustering Spam Domains<a class="anchor-link" href="#Example:-Clustering-Spam-Domains">&#182;</a></h3><blockquote><p>Tämä aliluku jätettiin kokonaan pois, sillä esimerkistä on hyvin vähän toisinnettavaa koodia muistiinpanoihin tuotavaksi. Aliluvussa käsitellään domain-tunnusten ryhmittelyä sekä toimia, joita datalle on tehtävä ennen luokittelun onnistumista. Dataan hyödynnetään <em>n</em>-grammien muodostusta, LSH-algoritmia (Luku 2), k-Means-ryhmittelyä ja satunnaismetsäluokitinta nimiöidyn datan luokitteluun.</p>
+</blockquote>
 
 </div>
 </div>
