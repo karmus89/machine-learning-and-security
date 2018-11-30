@@ -11810,7 +11810,7 @@ $( document ).ready(function(){
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Sisällysluettelo<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Production-Systems" data-toc-modified-id="Production-Systems-1">Production Systems</a></span><ul class="toc-item"><li><span><a href="#Defining-Machine-Learning-System-Maturity-and-Scalability" data-toc-modified-id="Defining-Machine-Learning-System-Maturity-and-Scalability-1.1">Defining Machine Learning System Maturity and Scalability</a></span><ul class="toc-item"><li><span><a href="#What's-Important-for-Security-Machine-Learning-Systems?" data-toc-modified-id="What's-Important-for-Security-Machine-Learning-Systems?-1.1.1">What's Important for Security Machine Learning Systems?</a></span></li></ul></li><li><span><a href="#Data-Quality" data-toc-modified-id="Data-Quality-1.2">Data Quality</a></span><ul class="toc-item"><li><span><a href="#Problem:-Bias-in-Datasets" data-toc-modified-id="Problem:-Bias-in-Datasets-1.2.1">Problem: Bias in Datasets</a></span></li><li><span><a href="#Problem:-Label-Inaccuracy" data-toc-modified-id="Problem:-Label-Inaccuracy-1.2.2">Problem: Label Inaccuracy</a></span></li><li><span><a href="#Solutions:-Data-Quality" data-toc-modified-id="Solutions:-Data-Quality-1.2.3">Solutions: Data Quality</a></span></li></ul></li></ul></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Production-Systems" data-toc-modified-id="Production-Systems-1">Production Systems</a></span><ul class="toc-item"><li><span><a href="#Defining-Machine-Learning-System-Maturity-and-Scalability" data-toc-modified-id="Defining-Machine-Learning-System-Maturity-and-Scalability-1.1">Defining Machine Learning System Maturity and Scalability</a></span><ul class="toc-item"><li><span><a href="#What's-Important-for-Security-Machine-Learning-Systems?" data-toc-modified-id="What's-Important-for-Security-Machine-Learning-Systems?-1.1.1">What's Important for Security Machine Learning Systems?</a></span></li></ul></li><li><span><a href="#Data-Quality" data-toc-modified-id="Data-Quality-1.2">Data Quality</a></span><ul class="toc-item"><li><span><a href="#Problem:-Bias-in-Datasets" data-toc-modified-id="Problem:-Bias-in-Datasets-1.2.1">Problem: Bias in Datasets</a></span></li><li><span><a href="#Problem:-Label-Inaccuracy" data-toc-modified-id="Problem:-Label-Inaccuracy-1.2.2">Problem: Label Inaccuracy</a></span></li><li><span><a href="#Solutions:-Data-Quality" data-toc-modified-id="Solutions:-Data-Quality-1.2.3">Solutions: Data Quality</a></span></li><li><span><a href="#Problem:-Missing-Data" data-toc-modified-id="Problem:-Missing-Data-1.2.4">Problem: Missing Data</a></span></li><li><span><a href="#Solutions:-Missing-Data" data-toc-modified-id="Solutions:-Missing-Data-1.2.5">Solutions: Missing Data</a></span></li></ul></li><li><span><a href="#Model-Quality" data-toc-modified-id="Model-Quality-1.3">Model Quality</a></span><ul class="toc-item"><li><span><a href="#Problem:-Hyperparameter-Optimization" data-toc-modified-id="Problem:-Hyperparameter-Optimization-1.3.1">Problem: Hyperparameter Optimization</a></span></li><li><span><a href="#Solutions:-Hyperparameter-Optimization" data-toc-modified-id="Solutions:-Hyperparameter-Optimization-1.3.2">Solutions: Hyperparameter Optimization</a></span></li><li><span><a href="#Feature:-Feedback-Loops,-A/B-Testing-of-Models" data-toc-modified-id="Feature:-Feedback-Loops,-A/B-Testing-of-Models-1.3.3">Feature: Feedback Loops, A/B Testing of Models</a></span></li><li><span><a href="#Feature:-Repeatable-and-Explainable-Results" data-toc-modified-id="Feature:-Repeatable-and-Explainable-Results-1.3.4">Feature: Repeatable and Explainable Results</a></span></li></ul></li><li><span><a href="#Performance" data-toc-modified-id="Performance-1.4">Performance</a></span><ul class="toc-item"><li><span><a href="#Goal:-Low-Latency,-High-Scalability" data-toc-modified-id="Goal:-Low-Latency,-High-Scalability-1.4.1">Goal: Low Latency, High Scalability</a></span></li><li><span><a href="#Performance-Optimization" data-toc-modified-id="Performance-Optimization-1.4.2">Performance Optimization</a></span></li></ul></li></ul></li></ul></div>
 </div>
 </div>
 </div>
@@ -11892,6 +11892,859 @@ $( document ).ready(function(){
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Solutions:-Data-Quality">Solutions: Data Quality<a class="anchor-link" href="#Solutions:-Data-Quality">&#182;</a></h3><p>Esiteltyihin ongelmiin on joitakin ratkaisuja. Tärkeintä on ymmärtää, että ongelma on todellinen. Havaintoluokkien epätasapaino on eräs vääristymän ilmentymä, joskin ilmeinen sellainen. Datajoukon keruuvaiheen vääristymiä on vaikeampi havaita, joita voi välttää vain olemalla erityisen huolellinen kerättävän datan ymmärtämisessä, keruun rajoitusten huomioinnissa ja keruun tavoitteiden mielessä pitämisessä. Joskus ongelman huolellinen rajaus auttaa jo sekin. Ihmisvirheitä saadaan vähennettyä, kun nimiöintiin osallistuu monia toisistaan riippumattomia henkilöitä. Tällöin havaintokohtainen konsensus on eräs ilmentymä onnistuneesta nimiöinnistä.</p>
+<p>Mallinnuksella voidaan myös vähintää datassa ilmenevän kohinan vaikutusta. Tällöin on käytettä vahvempaa regularisointia, jolloin malli pakotetaan oppimaan laaja-alaisemmin havaintoihin päteviä piirteitä vähentäen kohinan vaikutusta.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Problem:-Missing-Data">Problem: Missing Data<a class="anchor-link" href="#Problem:-Missing-Data">&#182;</a></h3><p>Puutteellinen data on yksi yleisempiä datan laadun ongelmia. Puutteet voivat johtua monista tekijöistä, kuten keruuprosessin tai lähtökohtaisten suunnittelupäätösten johdosta. Keskiössä on tällöin tapa, jolla puuttuvat arvot käsitellään ja esimerkiksi algoritmien välillä on eroja puuttuvien arvojen käsittelytavoissa. Puuttuvien arvojen korvaaminen ihmiselle ilmeisillä 0-arvoilla tai vastaavilla ei kuitenkaan välttämättä edesauta mallinnusta, joskin haitallinen vaikutus riippuu käytetystä algoritmista.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solutions:-Missing-Data">Solutions: Missing Data<a class="anchor-link" href="#Solutions:-Missing-Data">&#182;</a></h3><p>Esitellään puuttuvan datan ongelman ratkaisua esimerkillä, jossa käydään läpi puuttuvia arvoja sisältävää työntekijädataa. Aloitetaan lataamalla data.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;datasets/employee_attrition_missing.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[43]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TotalWorkingYears</th>
+      <th>MonthlyIncome</th>
+      <th>Overtime</th>
+      <th>DailyRate</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>6725</td>
+      <td>0</td>
+      <td>498.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12.0</td>
+      <td>2782</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.0</td>
+      <td>2468</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.0</td>
+      <td>5003</td>
+      <td>0</td>
+      <td>549.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>12.0</td>
+      <td>8578</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kuten huomata voi, puuttuu datajoukosta arvoja sieltä täältä. Katsotaanpa, mitä käy, kun tällaista dataa syötetään mallille.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Label&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="o">.</span><span class="n">Label</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-44-0dd8d693a57b&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">      7</span>     test_size=0.3, random_state=0)
+<span class="ansi-green-intense-fg ansi-bold">      8</span> 
+<span class="ansi-green-fg">----&gt; 9</span><span class="ansi-red-fg"> </span>clf <span class="ansi-blue-fg">=</span> DecisionTreeClassifier<span class="ansi-blue-fg">(</span>random_state<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>fit<span class="ansi-blue-fg">(</span>X_train<span class="ansi-blue-fg">,</span> y_train<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     10</span> 
+<span class="ansi-green-intense-fg ansi-bold">     11</span> y_pred <span class="ansi-blue-fg">=</span> clf<span class="ansi-blue-fg">.</span>predict<span class="ansi-blue-fg">(</span>X_test<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/anaconda3/envs/pytorch/lib/python3.7/site-packages/sklearn/tree/tree.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-fg">(self, X, y, sample_weight, check_input, X_idx_sorted)</span>
+<span class="ansi-green-intense-fg ansi-bold">    799</span>             sample_weight<span class="ansi-blue-fg">=</span>sample_weight<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-intense-fg ansi-bold">    800</span>             check_input<span class="ansi-blue-fg">=</span>check_input<span class="ansi-blue-fg">,</span>
+<span class="ansi-green-fg">--&gt; 801</span><span class="ansi-red-fg">             X_idx_sorted=X_idx_sorted)
+</span><span class="ansi-green-intense-fg ansi-bold">    802</span>         <span class="ansi-green-fg">return</span> self
+<span class="ansi-green-intense-fg ansi-bold">    803</span> 
+
+<span class="ansi-green-fg">~/anaconda3/envs/pytorch/lib/python3.7/site-packages/sklearn/tree/tree.py</span> in <span class="ansi-cyan-fg">fit</span><span class="ansi-blue-fg">(self, X, y, sample_weight, check_input, X_idx_sorted)</span>
+<span class="ansi-green-intense-fg ansi-bold">    114</span>         random_state <span class="ansi-blue-fg">=</span> check_random_state<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">.</span>random_state<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    115</span>         <span class="ansi-green-fg">if</span> check_input<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 116</span><span class="ansi-red-fg">             </span>X <span class="ansi-blue-fg">=</span> check_array<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">,</span> dtype<span class="ansi-blue-fg">=</span>DTYPE<span class="ansi-blue-fg">,</span> accept_sparse<span class="ansi-blue-fg">=</span><span class="ansi-blue-fg">&#34;csc&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    117</span>             y <span class="ansi-blue-fg">=</span> check_array<span class="ansi-blue-fg">(</span>y<span class="ansi-blue-fg">,</span> ensure_2d<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">,</span> dtype<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">None</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    118</span>             <span class="ansi-green-fg">if</span> issparse<span class="ansi-blue-fg">(</span>X<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/anaconda3/envs/pytorch/lib/python3.7/site-packages/sklearn/utils/validation.py</span> in <span class="ansi-cyan-fg">check_array</span><span class="ansi-blue-fg">(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, warn_on_dtype, estimator)</span>
+<span class="ansi-green-intense-fg ansi-bold">    571</span>         <span class="ansi-green-fg">if</span> force_all_finite<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    572</span>             _assert_all_finite(array,
+<span class="ansi-green-fg">--&gt; 573</span><span class="ansi-red-fg">                                allow_nan=force_all_finite == &#39;allow-nan&#39;)
+</span><span class="ansi-green-intense-fg ansi-bold">    574</span> 
+<span class="ansi-green-intense-fg ansi-bold">    575</span>     shape_repr <span class="ansi-blue-fg">=</span> _shape_repr<span class="ansi-blue-fg">(</span>array<span class="ansi-blue-fg">.</span>shape<span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/anaconda3/envs/pytorch/lib/python3.7/site-packages/sklearn/utils/validation.py</span> in <span class="ansi-cyan-fg">_assert_all_finite</span><span class="ansi-blue-fg">(X, allow_nan)</span>
+<span class="ansi-green-intense-fg ansi-bold">     54</span>                 not allow_nan and not np.isfinite(X).all()):
+<span class="ansi-green-intense-fg ansi-bold">     55</span>             type_err <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;infinity&#39;</span> <span class="ansi-green-fg">if</span> allow_nan <span class="ansi-green-fg">else</span> <span class="ansi-blue-fg">&#39;NaN, infinity&#39;</span>
+<span class="ansi-green-fg">---&gt; 56</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> ValueError<span class="ansi-blue-fg">(</span>msg_err<span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>type_err<span class="ansi-blue-fg">,</span> X<span class="ansi-blue-fg">.</span>dtype<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     57</span> 
+<span class="ansi-green-intense-fg ansi-bold">     58</span> 
+
+<span class="ansi-red-fg">ValueError</span>: Input contains NaN, infinity or a value too large for dtype(&#39;float32&#39;).</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Virhehän sen kertoo. Eli käytetty menetelmä (puumalli) ei osaa käsitellä ei-numeerisia, puuttuvia arvoja. Puuttuvia arvoja voidaan käsitellä viidellä tapaa:</p>
+<ul>
+<li>Puuttuvia arvoja sisältävät rivit tiputetaan pois.</li>
+<li>Puuttuvia arvoja sisältävät sarakkeet tiputetaan pois.</li>
+<li>Puuttuvat aukot täytetään datan lisäkeruulla.</li>
+<li>Puuttuvat arvot korvataan tätä ilmaisevalla arvolla (0, -1, jne.)</li>
+<li>Korvaamalla puuttuvat arvot datapohjaisin keinoin (<em>imputation</em>)</li>
+</ul>
+<p>Mikäli jotkin rivit tai sarakkeet ovat hyvin puutteellisia, on niiden pudottaminen perusteltua. Tällöin käytettävissä ei ole riittävää määrää kontekstitietoa arvojen korvaamiseen millään järkevällä tavalla. Datan keruu on onnistuessaan ja resurssien niin salliessa hyvä keino, sillä silloin puuttuvat arvot korvataan lähtökohtaisen datantuottoprosessin tuotteilla. Ilmaisinarvolla korvaus käsiteltiinkin jo. Kaikkein mielenkiintoisin menetelmistä on viimeinen, korvaus dataan pohjaten. Keskitytäänpä seuraavaksi siihen.</p>
+<p>Data-pohjaisella korvaamisella pyritään puuttuvat arvot korvaamaan siten, että esimerkiksi sarakekohtaiset jakaumat ei juuri muuttuisi. Tavoite on, ettei korvaus muuttaisi datan rakennetta. Toisin sanoen puuttuvat arvot korvataan joko keskiarvolla, mediaanilla tai moodilla, tilanteesta riippuen.</p>
+<p>Kokeillaanpa siis sitä seuraavaksi. Aloitetaan tutkimalla sarakekohtaiset tunnusluvut.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Dataset size: </span><span class="si">{df.shape[0]}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Dataset size: 1470
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[45]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TotalWorkingYears</th>
+      <th>MonthlyIncome</th>
+      <th>Overtime</th>
+      <th>DailyRate</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1048.000000</td>
+      <td>1470.000000</td>
+      <td>1470.000000</td>
+      <td>894.000000</td>
+      <td>1470.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>11.135496</td>
+      <td>6502.931293</td>
+      <td>0.282993</td>
+      <td>804.225951</td>
+      <td>0.161224</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>7.706084</td>
+      <td>4707.956783</td>
+      <td>0.450606</td>
+      <td>403.289867</td>
+      <td>0.367863</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>1009.000000</td>
+      <td>0.000000</td>
+      <td>103.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>6.000000</td>
+      <td>2911.000000</td>
+      <td>0.000000</td>
+      <td>469.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>10.000000</td>
+      <td>4919.000000</td>
+      <td>0.000000</td>
+      <td>800.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>15.000000</td>
+      <td>8379.000000</td>
+      <td>1.000000</td>
+      <td>1179.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>40.000000</td>
+      <td>19999.000000</td>
+      <td>1.000000</td>
+      <td>1499.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Dataa puuttuu sarakkeista <code>TotalWorkingYears</code> ja <code>DailyRate</code>. Tutkitaanpa vielä niiden sarakkeiden tunnuslukuja.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;TotalWorkingYears&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;  Mean: {df.TotalWorkingYears.mean()}&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;  Median: {df.TotalWorkingYears.median()}&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;  Mode(s): {&quot;, &quot;.join([str(m) for m in df.TotalWorkingYears.mode()])}&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">TotalWorkingYears</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+      
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DailyRate&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;  Mean: {df.DailyRate.mean()}&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;  Median: {df.DailyRate.median()}&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;  Mode(s): {&quot;, &quot;.join([str(m) for m in df.DailyRate.mode()])}&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">DailyRate</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>TotalWorkingYears
+  Mean: 11.135496183206106
+  Median: 10.0
+  Mode(s): 10.0
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>DailyRate
+  Mean: 804.2259507829978
+  Median: 800.0
+  Mode(s): 530.0, 688.0, 1082.0
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYIAAAD8CAYAAAB6paOMAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDMuMC4wLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvqOYd8AAAE2RJREFUeJzt3X+wZ3Vdx/HnywUF1FqIi27CdsFhLMZJoCuD0Q/DHxEaSmMl4xSZufbDKfvpgk3pVDNa/kinRt0C3QxNRFFCjDayHGcacNEFFoFA3RTZ2LUyRA0E3v3xPRev6917v9/dPd8f+3k+Zr5zz/mc8/2e9/3Mvfd1zzmfc06qCklSux4x6QIkSZNlEEhS4wwCSWqcQSBJjTMIJKlxBoEkNc4gkKTGGQSS1DiDQJIad8ikCxjG0UcfXfPz85MuQ5JmyvXXX/+lqppbbb2ZCIL5+Xm2bt066TIkaaYk+Y9h1vPQkCQ1ziCQpMYZBJLUOINAkhpnEEhS4wwCSWqcQSBJjTMIJKlxBoEkNW4mriyWpP01v/HDe12247XPGWMl08c9AklqnEEgSY0zCCSpcQaBJDXOIJCkxhkEktS43oIgyWFJrktyQ5Kbk7yma39nks8l2da9Tu6rBknS6vq8juA+4MyqujfJocDHk3ykW/a7VXVZj9uWJA2ptyCoqgLu7WYP7V7V1/YkSfum13MESdYk2QbsArZU1bXdoj9JcmOSNyV5VJ81SJJW1msQVNWDVXUycCxwWpInAxcA3ws8FTgKeOVy702yIcnWJFt3797dZ5mS1LSxjBqqqi8D/wKcVVU7a+A+4B3AaXt5z6aqWqiqhbm5uXGUKUlN6nPU0FyStd304cAzgVuTrOvaAjwf2N5XDZKk1fU5amgdsDnJGgaBc2lVXZnkn5PMAQG2Ab/cYw2SpFX0OWroRuCUZdrP7GubkqTReWWxJDXOIJCkxhkEktQ4g0CSGmcQSFLjDAJJapxBIEmNMwgkqXEGgSQ1ziCQpMYZBJLUOINAkhpnEEhS4wwCSWqcQSBJjTMIJKlxBoEkNa7PR1WqMfMbP7zi8h2vfc6YKhkfv+dvdzB+zwc79wgkqXG9BUGSw5Jcl+SGJDcneU3XfnySa5PcnuS9SR7ZVw2SpNX1uUdwH3BmVT0FOBk4K8npwOuAN1XVicD/AC/psQZJ0ip6C4IauLebPbR7FXAmcFnXvhl4fl81SJJW1+s5giRrkmwDdgFbgM8AX66qB7pV7gSe0GcNkqSV9TpqqKoeBE5Osha4HPi+5VZb7r1JNgAbANavX99bjZKmhyOSJmMso4aq6svAvwCnA2uTLAbQscBde3nPpqpaqKqFubm5cZQpSU3qc9TQXLcnQJLDgWcCtwAfBV7QrXY+8KG+apAkra7PQ0PrgM1J1jAInEur6soknwb+LskfA58CLuqxBknSKnoLgqq6EThlmfbPAqf1tV1J0mi8xYQOCp5klPadt5iQpMYZBJLUOINAkhpnEEhS4wwCSWqco4Y0No7skaaTewSS1DiDQJIaZxBIUuMMAklqnEEgSY1z1JBmwmojjqT90fqINvcIJKlxBoEkNc4gkKTGGQSS1DiDQJIaZxBIUuN6C4IkxyX5aJJbktyc5De69lcn+WKSbd3r7L5qkCStrs/rCB4AfruqPpnkscD1SbZ0y95UVa/vcduSpCH1FgRVtRPY2U1/JcktwBP62p4kad+M5RxBknngFODarunlSW5McnGSI8dRgyRpeb3fYiLJY4D3A6+oqnuSvBX4I6C6r28AfnGZ920ANgCsX79+n7e/P7cmmORl5SvVfbBe7u5tJKTJ6HWPIMmhDELgkqr6AEBV3V1VD1bVQ8BfAact996q2lRVC1W1MDc312eZktS0PkcNBbgIuKWq3rikfd2S1c4FtvdVgyRpdX0eGjoD+DngpiTburYLgfOSnMzg0NAO4GU91iBJWkWfo4Y+DmSZRVf1tU1J0uh8HkGDWjwRrYODP7v98BYTktS4oYIgyZP7LkSSNBnD7hG8Lcl1SX41ydpeK5IkjdVQQVBVPwS8CDgO2Jrk3Ume1WtlkqSxGPocQVXdDvw+8ErgR4G3JLk1yU/1VZwkqX9DjRpK8v3Ai4HnAFuAn+zuKvrdwL8BH+ivROngtT+jYKb19iktjuyZ9e952OGjf8HgdhAXVtXXFxur6q4kv99LZZKksRg2CM4Gvl5VDwIkeQRwWFV9rare1Vt1kqTeDXuO4J+Aw5fMH9G1SZJm3LBBcFhV3bs4000f0U9JkqRxGjYIvprk1MWZJD8AfH2F9SVJM2LYcwSvAN6X5K5ufh3ws/2UJEkap6GCoKo+keR7gScxuKPorVX1jV4rkySNxSh3H30qMN+955QkVNXf9FKVJGlshr2g7F3AE4FtwINdcwEGgSTNuGH3CBaAk6qq+ixGkjR+wwbBduDxwM4ea5k5q13iPwuXlu/pYPyeZtX+3EJiWh2M39PBYNggOBr4dJLrgPsWG6vqnF6qkiSNzbBB8OpRPzjJcQzOITweeAjYVFVvTnIU8F4GJ553AD9TVf8z6udLkg6MYZ9H8K8M/mgf2k1/AvjkKm97APjtqvo+4HTg15KcBGwErqmqE4FrunlJ0oQM+6jKlwKXAW/vmp4AfHCl91TVzqr6ZDf9FeCW7n3PAzZ3q20Gnj962ZKkA2XYW0z8GnAGcA88/JCaY4bdSJJ54BTgWuBxVbWz+5ydo3yOJOnAG/YcwX1VdX8SAJIcwuA6glUleQzwfuAVVXXP4mcM8b4NwAaA9evXD1nmdHGExPSY9QeHaHWz+vs2DSP1ht0j+NckFwKHd88qfh/w96u9KcmhDELgkqpafIrZ3UnWdcvXAbuWe29VbaqqhapamJubG7JMSdKohg2CjcBu4CbgZcBVDJ5fvFcZ/Ot/EXBLVb1xyaIrgPO76fOBD41SsCTpwBr2pnMPMXhU5V+N8NlnAD8H3JRkW9d2IfBa4NIkLwE+D/z0CJ8pSTrAhr3X0OdY5pxAVZ2wt/dU1ccZ3Kl0Oc8YqjpJUu9GudfQosMY/Bd/1IEvZ7rM6sknSQfWwf63YNgLyv5ryeuLVfXnwJk91yZJGoNhDw2dumT2EQz2EB7bS0WSpLEa9tDQG5ZMP0B3j6ADXo0kaeyGHTX0Y30XIkmajGEPDf3WSsv3uE5AkjRDRhk19FQGF4MB/CTwMeALfRSl/dPnCIeDffTEclr8ntWWUR5Mc2p3F1GSvBp4X1X9Ul+FSZLGY9hbTKwH7l8yfz+DB8tIkmbcsHsE7wKuS3I5gyuMz2Xw9DFJ0owbdtTQnyT5CPDDXdOLq+pT/ZUlSRqXYQ8NARwB3FNVbwbuTHJ8TzVJksZo2OGjf8hg5NCTgHcAhwJ/y+AOo9JMc5SV+jQLPwPD7hGcC5wDfBWgqu7CW0xI0kFh2CC4v6qK7lbUSR7dX0mSpHEaNgguTfJ2YG2SlwL/xGgPqZEkTalhRw29vntW8T0MzhP8QVVt6bUySdJYrBoESdYAV1fVMwH/+E+BWTj5JGl2rHpoqKoeBL6W5DvHUI8kacyGvbL4/xg8hH4L3cghgKr69b29IcnFwHOBXVX15K7t1cBLgd3dahdW1VX7ULck6QAZNgg+3L1G8U7gL/j2W1G8qapeP+JnSZJ6smIQJFlfVZ+vqs2jfnBVfSzJ/L4WJkkaj9XOEXxwcSLJ+w/QNl+e5MYkFyc58gB9piRpH60WBFkyfcIB2N5bgScCJwM7+dZnIX/rhpMNSbYm2bp79+69rSZJ2k+rBUHtZXqfVNXdVfVgVT3E4IK001ZYd1NVLVTVwtzc3P5uWpK0F6udLH5KknsY7Bkc3k3TzVdVfccoG0uyrqp2drPnAttHqlaSdMCtGARVtWZfPzjJe4CnA0cnuRP4Q+DpSU5msHexA3jZvn6+JOnAGHb46Miq6rxlmi/qa3uSpH0zyoNpJEkHIYNAkhpnEEhS4wwCSWqcQSBJjTMIJKlxBoEkNc4gkKTGGQSS1DiDQJIaZxBIUuMMAklqXG83nZM0u+Y3jvqIcs0y9wgkqXEGgSQ1ziCQpMYZBJLUOINAkhpnEEhS43oLgiQXJ9mVZPuStqOSbElye/f1yL62L0kaTp97BO8EztqjbSNwTVWdCFzTzUuSJqi3IKiqjwH/vUfz84DN3fRm4Pl9bV+SNJxxnyN4XFXtBOi+HjPm7UuS9jC1J4uTbEiyNcnW3bt3T7ocSTpojTsI7k6yDqD7umtvK1bVpqpaqKqFubm5sRUoSa0ZdxBcAZzfTZ8PfGjM25ck7aHP4aPvAf4NeFKSO5O8BHgt8KwktwPP6uYlSRPU222oq+q8vSx6Rl/blCSNbmpPFkuSxsMgkKTGGQSS1DiDQJIaZxBIUuMMAklqnEEgSY0zCCSpcQaBJDXOIJCkxhkEktQ4g0CSGmcQSFLjDAJJapxBIEmNMwgkqXEGgSQ1ziCQpMYZBJLUuN6eWbySJDuArwAPAg9U1cIk6pAkTSgIOj9WVV+a4PYlSXhoSJKaN6kgKOAfk1yfZMOEapAkMblDQ2dU1V1JjgG2JLm1qj62dIUuIDYArF+/fhI1Sget+Y0fnnQJmiIT2SOoqru6r7uAy4HTlllnU1UtVNXC3NzcuEuUpGaMPQiSPDrJYxengWcD28ddhyRpYBKHhh4HXJ5kcfvvrqp/mEAdkiQmEARV9VngKePeriRpeQ4flaTGGQSS1DiDQJIaZxBIUuMMAklqnEEgSY0zCCSpcQaBJDXOIJCkxhkEktQ4g0CSGmcQSFLjDAJJapxBIEmNMwgkqXEGgSQ1ziCQpMYZBJLUOINAkho3kSBIclaS25LckWTjJGqQJA2MPQiSrAH+EvgJ4CTgvCQnjbsOSdLAJPYITgPuqKrPVtX9wN8Bz5tAHZIkJhMETwC+sGT+zq5NkjQBh0xgm1mmrb5tpWQDsKGbvTfJbb1WNZqjgS9NuogRWG9/ZqlWmK16Z6lW6KnevG6/3v49w6w0iSC4EzhuyfyxwF17rlRVm4BN4ypqFEm2VtXCpOsYlvX2Z5Zqhdmqd5Zqhdmrd6lJHBr6BHBikuOTPBJ4IXDFBOqQJDGBPYKqeiDJy4GrgTXAxVV187jrkCQNTOLQEFV1FXDVJLZ9gEzlIasVWG9/ZqlWmK16Z6lWmL16H5aqbztPK0lqiLeYkKTGGQTLSHJcko8muSXJzUl+o2s/KsmWJLd3X4/s2pPkLd0tM25McuoEal6T5FNJruzmj09ybVfre7sT8yR5VDd/R7d8fgK1rk1yWZJbuz5+2rT2bZLf7H4Gtid5T5LDpqlvk1ycZFeS7UvaRu7LJOd369+e5Pwx1/tn3c/CjUkuT7J2ybILunpvS/LjS9rHcpua5epdsux3klSSo7v5iffvPqsqX3u8gHXAqd30Y4F/Z3A7jD8FNnbtG4HXddNnAx9hcI3E6cC1E6j5t4B3A1d285cCL+ym3wb8Sjf9q8DbuukXAu+dQK2bgV/qph8JrJ3GvmVwoePngMOX9OkvTFPfAj8CnApsX9I2Ul8CRwGf7b4e2U0fOcZ6nw0c0k2/bkm9JwE3AI8Cjgc+w2CAyZpu+oTu5+cG4KRx1du1H8dgwMt/AEdPS//u8/c56QJm4QV8CHgWcBuwrmtbB9zWTb8dOG/J+g+vN6b6jgWuAc4Erux+EL+05JfracDV3fTVwNO66UO69TLGWr+j++OaPdqnrm/55lXwR3V9dSXw49PWt8D8Hn9YR+pL4Dzg7Uvav2W9vuvdY9m5wCXd9AXABUuWXd3198N9vtx646gXuAx4CrCDbwbBVPTvvrw8NLSKbvf+FOBa4HFVtROg+3pMt9qkb5vx58DvAQ91898FfLmqHlimnodr7Zb/b7f+uJwA7Abe0R3K+uskj2YK+7aqvgi8Hvg8sJNBX13P9PbtolH7ctI/v0v9IoP/qmFK601yDvDFqrphj0VTWe8wDIIVJHkM8H7gFVV1z0qrLtM2luFYSZ4L7Kqq64esZ2K1dg5hsKv91qo6Bfgqg8MXezPJvj2SwQ0Rjwe+G3g0g7vm7q2eSfftavZW31TUneRVwAPAJYtNy6w20XqTHAG8CviD5RYv0zY1/bsSg2AvkhzKIAQuqaoPdM13J1nXLV8H7Orah7ptRk/OAM5JsoPBnVzPZLCHsDbJ4nUiS+t5uNZu+XcC/z2mWhe3f2dVXdvNX8YgGKaxb58JfK6qdlfVN4APAD/I9PbtolH7cpJ9DAxOpgLPBV5U3fGTFeqaZL1PZPCPwQ3d79yxwCeTPH6Fuibev6sxCJaRJMBFwC1V9cYli64AFs/4n8/g3MFi+893owZOB/53cde8b1V1QVUdW1XzDE5Q/nNVvQj4KPCCvdS6+D28oFt/bP+dVNV/Al9I8qSu6RnAp5nCvmVwSOj0JEd0PxOLtU5l3y4xal9eDTw7yZHdXtCzu7axSHIW8ErgnKr62pJFVwAv7EZjHQ+cCFzHBG9TU1U3VdUxVTXf/c7dyWBgyX8ypf07lEmfpJjGF/BDDHbdbgS2da+zGRzvvQa4vft6VLd+GDxs5zPATcDChOp+Ot8cNXQCg1+aO4D3AY/q2g/r5u/olp8wgTpPBrZ2/ftBBiMpprJvgdcAtwLbgXcxGMEyNX0LvIfB+YtvMPij9JJ96UsGx+bv6F4vHnO9dzA4hr74u/a2Jeu/qqv3NuAnlrSfzWA032eAV42z3j2W7+CbJ4sn3r/7+vLKYklqnIeGJKlxBoEkNc4gkKTGGQSS1DiDQJIaZxBIUuMMAklqnEEgSY37f1o0mP8scMtBAAAAAElFTkSuQmCC
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sarakkeelle <code>TotalWorkingYears</code> on käytettävä mediaania, mutta <code>DailyRate</code>-sarakkeelle riittää keskiarvo.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="k">import</span> <span class="n">SimpleImputer</span>
+
+<span class="n">imputer_mean</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">imputer_median</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">strategy</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">DailyRate</span> <span class="o">=</span> <span class="n">imputer_mean</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;DailyRate&#39;</span><span class="p">]])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">TotalWorkingYears</span> <span class="o">=</span> <span class="n">imputer_median</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;TotalWorkingYears&#39;</span><span class="p">]])</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[47]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TotalWorkingYears</th>
+      <th>MonthlyIncome</th>
+      <th>Overtime</th>
+      <th>DailyRate</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>10.0</td>
+      <td>6725</td>
+      <td>0</td>
+      <td>498.000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12.0</td>
+      <td>2782</td>
+      <td>0</td>
+      <td>804.225951</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>9.0</td>
+      <td>2468</td>
+      <td>0</td>
+      <td>804.225951</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.0</td>
+      <td>5003</td>
+      <td>0</td>
+      <td>549.000000</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>12.0</td>
+      <td>8578</td>
+      <td>0</td>
+      <td>804.225951</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[49]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[49]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TotalWorkingYears</th>
+      <th>MonthlyIncome</th>
+      <th>Overtime</th>
+      <th>DailyRate</th>
+      <th>Label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1470.000000</td>
+      <td>1470.000000</td>
+      <td>1470.000000</td>
+      <td>1470.000000</td>
+      <td>1470.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>10.809524</td>
+      <td>6502.931293</td>
+      <td>0.282993</td>
+      <td>804.225951</td>
+      <td>0.161224</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>6.525995</td>
+      <td>4707.956783</td>
+      <td>0.450606</td>
+      <td>314.435912</td>
+      <td>0.367863</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>1009.000000</td>
+      <td>0.000000</td>
+      <td>103.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>7.000000</td>
+      <td>2911.000000</td>
+      <td>0.000000</td>
+      <td>670.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>10.000000</td>
+      <td>4919.000000</td>
+      <td>0.000000</td>
+      <td>804.225951</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>11.000000</td>
+      <td>8379.000000</td>
+      <td>1.000000</td>
+      <td>922.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>40.000000</td>
+      <td>19999.000000</td>
+      <td>1.000000</td>
+      <td>1499.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kuten odottaa saattaa, on keskiarvo vuosien kohdalla hieman muuttunut, mutta toisen sarakkeen kohdalla jäänyt muuttumattomaksi. Koitetaanpa mallinnusta uudestaan.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Label&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">df</span><span class="o">.</span><span class="n">Label</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[48]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>0.7392290249433107</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Model-Quality">Model Quality<a class="anchor-link" href="#Model-Quality">&#182;</a></h2><p>Koulutetut mallit ovat koneoppimismallien kovaa ydintä, jotka vaativat siksi laadullista ja toiminnallista tarkkailua. Etenkin kyberturvallisuuskontekstissa näihin asioihin on kiinnitettävä huomiota koulutuksen ja tuotantoonviennin jälkeenkin, jotta malli on varmasti ajantasainen ja haluttuun suorituskykyyn ulottuva. Mallin on oltava myös luotettava vihamielisestä ympäristöstään huolimatta.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Problem:-Hyperparameter-Optimization">Problem: Hyperparameter Optimization<a class="anchor-link" href="#Problem:-Hyperparameter-Optimization">&#182;</a></h3><p>Hyperparametrit ovat varsinaisiin algoritmin parametrien (esim. neuroverkon painot) optimointiin ja oppimiseen vaikuttavia arvoja. Niitä ei siis opita, vaan ne säätelevät oppimista. Näitä ovat esimerkiksi oppimiskerroin, regularisointikerroin, puumallin syvyys jne. Niitä on monia ja ne vaihtelevat mallin, optimointialgoritmin ja valittujen regularisointimenetelmien mukaan. Ne on määritettävä usein yrityksen ja erehdyksen kautta ja niiden keskinäiset suhteet selviävät, mikäli selviävät, samalla tavoin. Mitä enemmän säädettäviä hyperparametreja löytyy, sitä useampi koulutus on tehtävä parhaimman mallin tuottavien hyperparametrien määrittämiseksi. Muutokset datassa tai mallin rakenteessa voivat vaikuttaa merkittävästikin aiemmin sopineiden hyperparametrien validiuteen.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Solutions:-Hyperparameter-Optimization">Solutions: Hyperparameter Optimization<a class="anchor-link" href="#Solutions:-Hyperparameter-Optimization">&#182;</a></h3><p>Mikäli säädettäviä hyperparametreja on vähän, voidaan optimaalisin hyperparamertien joukko valitaa raa'an voiman avulla koittamalla soveliaita arvoja kaikilla soveliailla arvojen sekoituksilla. Yleisempi tapa on kuitenkin käyttää erilaisia tekniikoita eri hyperparametrien arvojen tehokkaaseen läpikäyntiin parhaiten suorituvan mallin tuottavan hyperparametrijoukon löytämiseksi.</p>
+<p>Eniten käytetyt hyperparametrien viritykseen käytetyt menetelmät of taulukkomainen hila- tai taulukkoetsintä (<em>grid search</em>) ja hyperparametrejä jakaumista satunnaisesti nostava satunnaisetsintä (<em>random search</em>).</p>
+<p>Ensimmäinen menetelmistä, taulukkoetsintä, toimii, kunhan hyperparametrien määrä on vähäinen. Jos esimerkiksi hyperparametreja on vain kolme, ja kullekin etsitään parasta vaihtoehtoa kolmen arvon joukosta, on malli koulutettava $3^3=27$ kertaa jokaisen arvojoukon kokeilemiseksi. Kuten edellisestä voi nopeasti huomata, kasvaa etsintään vaadittujen koulutusten määrä eksponentiaalisesti sekä hyperparametrien että niiden kohdalla kokeiltavien arvojen kohdalla.</p>
+<p>Toinen menetelmistä, satunnaisetsintä, toimii lähtökohtaisesti paremmin, kun tarvittavien koulutusten määrä räjähtäisi taulukkokoulutuksella käsiin. Tällöin kullekin hyperparametrille määritellään todennäköisyysjakauma, josta kullekin uudelle koulutukselle nostetaan uusi satunnainen arvo, hyperparametrikohtaisesti. Näin toimittaessa yrityksen ja erehdyksen menetelmä muuntuu lähemmäs tilastotieteellistä lähestymistä, jolla voidaan usein päästä myös parempaan tarkkuuteen hyperparametrien optimaalisimpien arvojen valinnassa.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Feature:-Feedback-Loops,-A/B-Testing-of-Models">Feature: Feedback Loops, A/B Testing of Models<a class="anchor-link" href="#Feature:-Feedback-Loops,-A/B-Testing-of-Models">&#182;</a></h3><p>Koska kyberturvallisuuden kohdalla käytettyjen mallien tarkkuus on lähes kaikki kaikessa, on järjestelmistä oltava riittävät takaisinkytkennät mallin toiminnan korjaamiseen ja kehittämiseen. Staattisten mallien kohtalona on ajan myötä heiketä, sillä datalla on taipumus elää ajan myötä. Siksi mukautumiskyky muuttuviin olosuhteisiin on tärkeä elementti mallin elinkaaren pidentämisessä. Yksinkertaisimmillaan toimiva takaisinkytkentä on mallin säätäminen jokaisen tutkitun väärin luokitellun havainnon kohdalla, jolla pyritään varmistumaan samankaltaisen virheen toistumattomuudesta tulevaisuudessa.</p>
+<p>Edellämainittuun liittyy vahvasti kaksi koneoppimisen osa-aluetta, vahvistusoppiminen (<em>reinforcement learning</em>) ja aktiivinen oppiminen. Ensimmäinen liittyy oppimiseen palkitsemisen kautta ja siinä pääpaino on tuntemattoman tutkimisen ja tunnetun hyväksikäyttämisen tasapainottamisessa. Toinen on taas osittain ohjatun oppimisen erikoistapaus, jossa kaikista epävarmimmissa ennusteissa mallia autetaan eteenpäin ihmisvoimin.</p>
+<p>A/B-testaus on puolestaan satunnaistettu testaustapa järjestelmän osien kokonaisvaikutuksen ymmärtämiseksi. A/B-testejä käytetään etenkin verkkosivuilla monitavoitteiseen optimointiin. Menetelmässä populaatio jaetaan satunnaisesti kahteen osiin ja osat näkevät eri versiot testattavasta järjestelmästä ja mittaamalla vaikutusten eroja sekä erojen tilastollista merkitsevyyttä. A-ryhmä näkee tavallisesti uuden version, kun taas B-ryhmä toimii kontrollina ja testauksen haasteena onkin tasapainoilla luotettavan uutta järjestelmää kuvaavan datamassan tuottamisen ja saavutetun suorituskyvyn ylläpitämisen välillä. Uudet mallit on hyvä testata aina näin, sillä pelkkä mallien jatkuva oppiminen ei takaa edes pysyvää suorituskykyä. Vihamielisissä ympäristöissä on kuitenkin oltava erityisen tarkka, sillä A/B-testauksen lähtökohtaoletuksena on muuttumaton datantuottoprosessi, minkä varjolla testiryhmien erot voidaan sälyttää versioeroille. Tämä ongelma palaa datan tasapainottamiseen ja luotettavaan dataan.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Feature:-Repeatable-and-Explainable-Results">Feature: Repeatable and Explainable Results<a class="anchor-link" href="#Feature:-Repeatable-and-Explainable-Results">&#182;</a></h3><p>Oikean vastauksen saaminen tai hyvä suorituskyky kerran ei riitä, vaan tärkeintä on toistettavuus ja toistettava prosessi. Esimerkiksi luokittelun tulisi olla johdonmukaista ja ennustettavaa. Pelkän luokittelutarkkuuden tuijottaminen ei takaa sitä, että menetelmä otetaan käyttöön ja hyväksytään. Ihmisen on kyettävä ymmärtämään mallin toimintaa riittävästi, jotta hän kykenee luottamaan mallin tekemiin päätöksiin. Samoin menetelmien kehittäjät kykenevät korjaamaan ja jatkokehittämään mallia paremmin, kun ymmärrys mallin päätösperusteista on edes jokseenkin selkeä.</p>
+<p>Koneoppimisessa toistettavuus liittyy olennaisesti ajassa muuttuvien mallien toiminnan toisintamiseen. Havaintokohtaisten luokittelutulosten muuttuessa on erityisen hyödyllistä kyetä vertaamaan aiempaa ja uusinta mallin versiota siten, että tulokset vastaavat kunkin version todellista toimintaa omana toiminta-aikanaan. Tämä mahdollistetaan esimerkiksi tallennuspistein, jotka ikäänkuin versioivat tuotantokäytössä olevaa mallia automaattisesti.</p>
+<p>Selitettävyys on konseptina hankalampi, sillä sen aste on hyvin algoritmiriippuvaista. Jo itse kysymys on hankalammin määriteltävä: Mitä tarkoittaa selitettävä malli? Erään määritelmän mukaan selitettävän mallin tulokset on soveliain työkaluin selitettävissä auki siten, että mallia käyttävät ihmiset ymmärtävät mallin päätösten perusteet, kykenevät luottamaan mallin päätöksiin ja myös täten hallitsemaan mallia ymmärryksellä. Selitettävä malli tarjoaa siis riittävästi tietoa syy-seuraus-suhteiden määrittämiseksi. Tätä varten on kuitenkin kehitetty jo erinäisiä menetelmiä. Yksi tällainen on paikallisten tulkittavien malli-agnostisten selityksien (<em>local interpretable model-agnostic explanations, LIME</em>) menetelmä, joka syöttää mallille muunneltuja syötteitä ja pyrkii syötteiden ja mallin muutosten perusteella arvioimaan mallin päätösperusteita.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Performance">Performance<a class="anchor-link" href="#Performance">&#182;</a></h2><p>Monet tietoturvajärjestelmät sijaitsevat usein ruuhkaisissa järjestelmän osissa. Niiden on oltava siksi suorituskykyisiä ja vaatimiensa resurssien näkökulmasta tehokkaita käyttää. Jopa millisekunnin viive voi kaataa koko järjestelmän. Toisaalta niiden on kyettävä toimimaan myös äärimmäisen rasituksen alla.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Goal:-Low-Latency,-High-Scalability">Goal: Low Latency, High Scalability<a class="anchor-link" href="#Goal:-Low-Latency,-High-Scalability">&#182;</a></h3><p>Koneoppiminen on laskennallisesti raskasta. Tehokkaimpien mallien kohdalla niiden käyttö varsinaisessa palvelun dataputkessa voi kuitenkin aiheuttaa niin merkittävän viiveen, että palvelun käyttäjät alkavat kokea sen negatiivisena. Asynkroniset päätöksentekoprosessit auttavat tässä, jossa malleja ajetaan palvelun rinnalla muodostamatta kuitenkaan viivettä lisäävää pullonkaulaa. Näin toimittaessa on kuitenkin aina punnittava riskit - läpipäässyt, joskin jälkikäteen oikein luokiteltu haittavaikutus, voi kyetä aiheuttamaan mittavia vahinkoja.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Performance-Optimization">Performance Optimization<a class="anchor-link" href="#Performance-Optimization">&#182;</a></h3><p>Kuten ohjelmistokehityksessä, myös koneoppimisessa voidaan jossain määrin tarkastella mallin kokonaissuorituskykyä ositellusti ja jaotellusti. Keinoja ovat muun muassa:</p>
+<ul>
+<li><p><em>Profilointi ja optimointi</em>: Instrumentoimalla mallin toimintaa aina datan muunnoksista itse mallin sisäisiin datan käsittelyn prosesseihin voidaan löytää merkittäviä pullonkauloja, joiden poistaminen nopeuttaa menetelmän toimintaa huomattavasti. Instrumentointi tehdään tavallisesti profilointisovelluksella.</p>
+</li>
+<li><p><em>Algoritmin optimointi</em>: Joskus algoritmia muokkaamalla tai sen vaihtamisella voidaan myös saavuttaa haluttu suorituskykyloikka jopa ilman, että mallin tarkkuus alenee merkittävästi.</p>
+</li>
+</ul>
+<p>Käytännön keinoja mallin nopeuttamiseksi on mm. piirreavaruuden kaventaminen vähemmän merkitsevien piirteiden poistamisella, puumallien käyttö, linearimallien käyttö, datan niin salliessa myös tukivektorikoneiden käyttö, rinnakkaisajetut neuroverkot ja likimääräiset k-syvyiset puut.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Horizontal-Scaling-with-Distributed-Computing-Frameworks">Horizontal Scaling with Distributed Computing Frameworks<a class="anchor-link" href="#Horizontal-Scaling-with-Distributed-Computing-Frameworks">&#182;</a></h3><p>Kuten juuri mainittiinkin, on rinnakkaistus (<em>parallelization</em>) tehokas tapa lisätä käytetyn mallin suorituskykyä. Vaikkakaan kaikkia malleja ja datajoukkoja ei niin vain voida suoraan hajauttaa osiin,</p>
 
 </div>
 </div>
