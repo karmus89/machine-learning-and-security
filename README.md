@@ -1,6 +1,8 @@
 # machine-learning-and-security
 Finnish notes for the book Machine Learning &amp; Security (Chio &amp; Freeman, 2018).
 
+*Sometimes the pages fail to load. This is due to failure in serving large HTML-files from Github to an external preview service. This is a Github-side problem, bu reload should alleviate it.*
+
 *The chapter-wise notes should be viewable with mobile devices as well.*
 
 ## Why in Finnish and not in English?
