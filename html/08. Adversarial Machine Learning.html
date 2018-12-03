@@ -11810,7 +11810,7 @@ $( document ).ready(function(){
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Sisällysluettelo<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Adversarial-Machine-Learning" data-toc-modified-id="Adversarial-Machine-Learning-1">Adversarial Machine Learning</a></span></li></ul></div>
+<div class="toc"><ul class="toc-item"><li><span><a href="#Adversarial-Machine-Learning" data-toc-modified-id="Adversarial-Machine-Learning-1">Adversarial Machine Learning</a></span><ul class="toc-item"><li><span><a href="#Terminology" data-toc-modified-id="Terminology-1.1">Terminology</a></span></li></ul></li></ul></div>
 </div>
 </div>
 </div>
@@ -11818,7 +11818,22 @@ $( document ).ready(function(){
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Adversarial-Machine-Learning">Adversarial Machine Learning<a class="anchor-link" href="#Adversarial-Machine-Learning">&#182;</a></h1>
+<h1 id="Adversarial-Machine-Learning">Adversarial Machine Learning<a class="anchor-link" href="#Adversarial-Machine-Learning">&#182;</a></h1><p>Koneoppimisen käyttöasteen noustessa sen luotettavuus on entistä tarkemman syynin alla, sillä vihamielinen vaikuttaminen ulottuu myös malleihin. Vihamielisen koneoppimisen (<em>adversarial machine learning</em>) tutkimus keskittyy mallinnustutkimukseen vihamielisissä ympäristöissä. Tällä alueella on onnistuttu toteuttamaan hyökkäyksiä mm. antivirusohjelmistoja ja roskapostisuotimia vastaan. Mallinnusmenetelmien haavoittuvuudet voivat johtua itse algoritmien rajoituksista, toteutuksesta tai näiden yhdistelmästä.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Terminology">Terminology<a class="anchor-link" href="#Terminology">&#182;</a></h2><p>Tutkimuksen alkuvaiheissa keskityttiin mm. laadullista analyysiä helpottavan taksonomian muodostamiseen. Vihamielisen koneoppimisen kolme ulottuvuutta ovat tämän taksonomian mukaisesti:</p>
+<ul>
+<li><em>Vaikutus</em>: Syihin perustuvat hyökkäykset (<em>causative attacks</em>) pyrkivät vaikuttamaan jo koulutuksessa käytettävään dataan. Heikoimmassa asemassa ovat näissä hyökkäyksissä jatkuvasti oppivat menetelmät (<em>online algorithms</em>), jotka pyrkivät oppimaan jatkuvasti uusista havainnoista ja tarkentamaan päätösrajapintojaan ajan myötä. Tutkivat hyökkäykset (<em>exploratory attacks</em>) keskittyvät vuorostaan vain koulutuksen jälkeisen mallin toiminnan ymmärtämiseen ja täten hyväksikäyttöön.</li>
+<li><em>Tarkkuus</em>: Kohdistetut hyökkäykset (<em>targeted attacks</em>) pyrkivät vaikuttamaan ohjatusti ja aiotusti muuttamaan mallin päätösrajapintaa tietyn tavoitteen mukaiseksi. Kohdistamattomat hyökkäykset (<em>indiscriminate attacks</em>) pyrkivät vain tekemään mallista ylipäätään epätarkemman ja epäluotettavan.</li>
+<li><em>Tietoturvan loukkaus</em>: Yhtenäisyyteen kohdistuvat hyökkäykset (<em>integrity attacks</em>) pyrkivät vaikuttamaan malliin siten, että ne vähentävät oikein luokiteltujen havaintojen osuutta (<em>true positive, recall</em>). Saatavuuten kohdistuvat hyökkäykset (<em>availability attacks</em>) vuorostaan keskittyvät rampauttamaan kohdejärjestelmän mallin tunnistuskykyä, sillä väärien tunnistustulosten (<em>false positive</em>) lisääntyessä manuaalinen työmäärä kasvaa ja mallin kokonaisluotettavuus laskee.</li>
+</ul>
+
 </div>
 </div>
 </div>
