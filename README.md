@@ -15,7 +15,8 @@ The simple answer: To help native Finnish speakers grasp the consepts of machine
  - [04 - Malware Analysis](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/04.%20Malware%20Analysis.html)
  - [05 - Network Traffic Analysis](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/05%20-%20Network%20Traffic%20Analysis.html)
  - [06 - Protecting the Consumer Web](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/06.%20Protecting%20the%20Consumer%20Web.html)
- - ...
+ - [07 - Production Systems](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/07.%20Production%20Systems.html)
+ - [08 - Adversarial Machine Learning](http://htmlpreview.github.io/?https://github.com/karmus89/machine-learning-and-security/blob/master/html/08.%20Adversarial%20Machine%20Learning.html)
 
 ---
 
